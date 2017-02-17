@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/tingyun-rum.js"></script>
+    <meta charset="utf-8"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="on" http-equiv="x-dns-prefetch-control"/>
+    <title>
+        列表样式
+    </title>
+    <link href="css/reset.css?=11" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <!-- 单页面在外面包裹一层page -->
+    <!-- <div class="page"> -->
+    <!-- 顶部标题 -->
+    <div class="bar-header">
+        <a class="bar-back fl" href="javascript:history.go(-1);">返回</a>
+        <h1 class="bar-title">列表</h1>
+    </div>
+    <!-- header bar end -->
+    
+    <!-- 底部导航 -->
+    <!-- <nav class="bar-footer cell-item">
+        btns-inline
+        <div class="item-inner">
+            <small>总金额</small>
+            <big class="primary">￥60.00</big>
+        </div>
+        <a class="btn">购买</a>
+        <a class="btn btn-warning">底部按钮</a>
+    </nav> -->
+    <!-- bar-footer end -->
+
+    <!-- 主体内容 -->
+    <div class="content">
+        <!-- content main 让版权保持在底部 -->
+        <div class="content-main">
+            
+            <!-- 正文开始 -->
+            <div class="list-title">普通列表（item-title 为实现截断）</div>
+            
+            <ul class="list-cont">
+                <li class="list-item">
+                    <p class="item-inner">标题文本</p>
+                    <p class="item-after">
+                        <span class="tag bg-disabled">提示</span>
+                    </p>
+                </li>
+                <li class="list-item item-link">
+                    <p class="item-inner">标题文本</p>
+                    <p class="item-after">
+                        <span class="tag">1</span>
+                    </p>
+                </li>
+
+                <li class="list-item item-link">
+                    <label class="item-label gray">标题项目</label>
+                    <p class="item-inner">标题文本</p>
+                    <p class="item-after">
+                        <span class="reddot"></span>
+                    </p>
+                </li>
+                <li class="list-item">
+                    <label class="item-label gray">标题项目</label>
+                    <p class="item-inner">标题文本</p>
+                    <p class="item-after">
+                        <span class="tag bg-primary r-small">提示</span>
+                    </p>
+                </li>
+            </ul>
+
+            
+            <div class="list-title">基础结构：item-meida, item-inner, item-after</div>
+            <div class="list-cont">
+                <div class="list-item item-link">
+                    <p class="item-icon">
+                        <img alt="图标" src="img/error-640x640.jpg"/>
+                    </p>
+                    <p class="item-inner">这是字体图标icon</p>
+                    <a class="item-after" href="javascript:location.reload();">刷新</a>
+                </div>
+                <div class="list-item item-link">
+                    <p class="item-media item-icon">
+                        <img alt="图标" src="img/error-640x640.jpg"/>
+                    </p>
+                    <p class="item-title">这是标题很长的时候加nowarp截断很长很长</p>
+                    <p class="item-after">这是尾部</p>
+                </div>
+            </div>
+
+            <div class="list-title">商品列表</div>
+            <div class="list-cont">
+                <div class="list-item">
+                    <img alt="图标" class="item-img" src="img/error-640x640.jpg"/>
+                    <div class="item-inner">
+                        <p>这是主标题</p>
+                        <p class="item-subtitle">这是副标题</p>
+                    </div>
+                    <p class="item-after">尾标</p>
+                </div>
+                <div class="list-item item-link">
+                    <img alt="图标" class="item-img-big" style="width: 5rem;" src="img/error-640x640.jpg"/>
+                    <div class="item-inner">
+                        <p><i class="tag bg-primary r-small">提示</i> 这是主标题标题项目标题项目标题项目标题项目</p>
+                        <small>绿色，M，加厚，等等</small>
+                        <p><small>价格：</small><i class="primary">￥100:00</i></p>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                   <div style="width: 100%;">
+                        <div style="width: 100%;">
+                            <img alt="图标" class=""  src="img/error-640x640.jpg"/>
+                        </div>
+                        <div class="cell-item">
+                            <img alt="图标" class="item-img-s"  src="img/error-640x640.jpg"/>
+                            <span class="item-title"><i class="tag bg-primary r-small">提示</i> 这是主标题标题项目标题项目标题项目标题项目</span>
+                            <span class="item-after">尾巴</span>
+                        </div>
+                        <small>绿色，M，加厚，等等</small>
+                        <p><small>价格：</small><i class="primary">￥100:00</i></p>
+                    </div>
+               </div>
+            </div>
+
+            <div class="list-title">复杂列表（可通过cell-item扩展flex结构）</div>
+            <div class="list-cont">
+                <div class="list-item item-link">
+                    <img alt="图标" class="item-img" src="img/error-640x640.jpg"/>
+                    <div class="item-inner">
+                        <div class="cell-item">
+                            <p class="item-title">这是主标题</p>
+                            <p class="item-after">尾标</p>
+                        </div>
+                        <small class="cell-item">
+                            <p class="item-inner color-gary">2016-03-30</p>
+                            <p class="item-after">尾标</p>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-cont">
+                <div class="list-item">
+                    <p class="item-title">这是主标题</p>
+                    <p class="item-after">尾标</p>
+                </div>
+                <div class="list-item item-link align-top">
+                    <img alt="图标" class="item-img-big" src="img/error-640x640.jpg"/>
+                    <p class="item-title">这是主标题，顶部对齐</p>
+                </div>
+            </div>
+            
+            <div class="list-title">图片列表</div>
+            <div class="list-cont">
+                <div class="list-item">
+                    <img alt="图标" class="item-img-s border" src="img/error-640x640.jpg"/>
+                    <div class="item-inner">小图标</div>
+                    <p class="item-after">尾标</p>
+                </div>
+                <div class="list-item">
+                    <img alt="图标" class="item-img" src="img/error-640x640.jpg"/>
+                    <p class="item-inner">普通图标</p>
+                    <p class="item-after">尾标</p>
+                </div>
+                <div class="list-item">
+                    <div class="item-img-big r-round">
+                        <img alt="图标" class="r-round" src="img/error-640x640.jpg"/>
+                    </div>
+                    <p class="item-inner">圆角普通图标</p>
+                    <p class="item-after">尾标</p>
+                </div>
+                <div class="list-item">
+                    <img alt="图标" class="item-img-big" src="img/error-640x640.jpg"/>
+                    <div class="item-inner">大图标</div>
+                    <p class="item-after">尾标</p>
+                </div>
+            </div>
+
+            <div class="list-title">反向列表</div>
+            <div class="list-cont">
+                <div class="list-item item-link">
+                    <p class="item-inner">反向icon图标</p>
+                    <p class="item-after item-icon"><i class="icon-gift"></i></p>
+                </div>
+                <div class="list-item item-link">
+                    <p class="item-inner">反向小图标</p>
+                    <div class="item-after">
+                        <img alt="图标" class="item-img-s" src="img/error-640x640.jpg"/>
+                    </div>
+                </div>
+                <div class="list-item item-link">
+                    <p class="item-inner">反向普通图标</p>
+                    <div class="item-after">
+                        <img alt="图标" class="item-img" src="img/error-640x640.jpg"/>
+                    </div>
+                </div>
+                <div class="list-item item-link">
+                    <p class="item-inner">反向大图标</p>
+                    <div class="item-after">
+                        <img alt="图标" class="item-img-big" src="img/error-640x640.jpg"/>
+                    </div>
+                </div>
+            </div>
+            <div class="list-tips">列表底部提示</div>
+
+            <div class="list-cont">
+                <div class="list-item list-title">
+                    <p class="nowarp">这是列表内标题</p>
+                </div>
+                <div class="list-item cell-link">
+                    <div class="item-inner">
+                        <p class="item-title">这是主标题</p>
+                        <p class="item-desc">
+                            这是描述这是描述这是描述这是描述这是描述这是描述这是描述这是描述这是描述这是描述这是描述这是描这是描述
+                        </p>
+                        <div class="cell-item item-foot">
+                            <p class="item-inner">文字来源</p>
+                            <p class="item-inner">2016-03-30</p>
+                            <p>其他</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-item cell-link">
+                    <div class="item-inner">
+                        <p class="item-title">这是主标题</p>
+                        <p class="item-desc">
+                            这是描述这是描述这是描述这是描述这是描述这是描述这是描述这是描述这是描述这是描述这是描述这是描述这是描述
+                        </p>
+                        <div class="cell-item item-foot">
+                            <p class="item-inner">文字来源</p>
+                            <p class="item-inner">2016-03-30</p>
+                            <p>其他</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-big"></div>
+            <!-- 正文结束 -->
+
+        </div>
+        <!-- content-main end -->
+        <!-- 版权信息 -->
+        <div class="copyright-cont">版权信息</div>
+    </div>
+
+    <!-- content end -->
+    <!-- </div> -->
+    <!-- page end -->
+    <script src="js/core/zepto.js">
+    </script>
+</body>
+</html>

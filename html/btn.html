@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/tingyun-rum.js"></script>
+    <meta charset="utf-8"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="on" http-equiv="x-dns-prefetch-control"/>
+    <title>按钮样式</title>
+    <link href="css/reset.css?=14" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <!-- 单页面在外面包裹一层page -->
+    <!-- <div class="page"> -->
+    <!-- 顶部标题 -->
+<!--     <div class="bar-header">
+    <a class="bar-back fl" href="javascript:history.go(-1);">返回</a>
+    <h1 class="bar-title">按钮</h1>
+</div> -->
+    <!-- header bar end -->
+    
+    <!-- 底部导航 -->
+    <!-- <nav class="bar-footer">
+        <a class="btn" href="javascript:location.reload();">底部按钮</a>
+    </nav> -->
+    <nav class="bar-footer">
+        <div class="btns-inline">
+            <a class="btn" href="javascript:location.reload();">底部按钮</a>
+            <a class="btn btn-default" href="javascript:location.reload();">底部按钮</a>
+        </div>
+    </nav>
+    <!-- bar-footer end -->
+
+    <!-- 主体内容 -->
+    <div class="content">
+        <!-- content main 让版权保持在底部 -->
+        <div class="content-main">
+            
+            <!-- 正文开始 -->
+            <a href="javascript:history.go(-1);" class="btn-gotop"><i class="uicon-gotop"></i></a>
+            <a href="javascript:history.go(-1);" class="btn-back">
+                <i class="uicon-gotop" hidden></i>
+            </a>
+            <div class="cont-block">
+                <a href="" class="btn">主色按钮</a>
+                <a href="" class="btn btn-success">成功按钮</a>
+                <a href="" class="btn btn-danger">失败按钮</a>
+                <a href="" class="btn btn-warning">警告按钮</a>
+                <a href="" class="btn btn-default">默认按钮</a>
+                <a href="" class="btn btn-default disabled">禁用按钮</a>
+            </div>
+            
+            <div class="cont-block btns-inline">
+                <a href="" class="btn">平均分布</a>
+                <a href="" class="btn">的按钮</a>
+            </div>
+            
+            <div class="cont-block">
+                <a href="" class="btn btn-inline">inline布局</a>
+                <a href="" class="btn btn-inline">的按钮</a>
+            </div>
+            
+            <div class="cont-block btns-justify">
+                <a href="" class="btn btn-success">按钮</a>
+                <a href="" class="btn btn-mini">按钮</a>
+                <a href="" class="btn btn-mini btn-default">按钮</a>
+            </div>
+            
+            <div class="mt-big"></div>
+            <!-- 正文结束 -->
+
+        </div>
+        <!-- content-main end -->
+        <!-- 版权信息 -->
+        <div class="copyright-cont">版权信息</div>
+    </div>
+
+    <!-- content end -->
+    <!-- </div> -->
+    <!-- page end -->
+    <script src="js/core/zepto.js">
+    </script>
+</body>
+</html>

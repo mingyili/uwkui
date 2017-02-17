@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/tingyun-rum.js"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="x-dns-prefetch-control" content="on"/>
+    <title>Tabs</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css?=11" />
+</head>
+<body>
+    <!-- 单页面在外面包裹一层page -->
+    <!-- <div class="page"> -->
+        
+        <!-- 顶部标题 -->
+    	<div class="bar-header">
+            <a href="javascript:history.go(-1);" class="bar-back fl">返回</a>
+            <a class="bar-link fr">栏目</a>
+    		<h1 class="bar-title">首页</h1>
+    	</div>
+        <!-- header bar end -->
+        
+        <!-- 底部导航 -->
+        <nav class="bar-footer"> <!-- btns-inline cell-item -->
+            <div class="tabs-bar">
+                <a class="tab-item active" href="index.html">
+                    <span class="tab-icon">
+                        <i class="uicon-circle"></i>
+                        <!-- <img alt="图标" src="img/error-640x640.jpg"/> -->
+                    </span>
+                    <span class="tab-label">首页</span>
+                </a>
+                <a class="tab-item" href="list-text.html">
+                    <span class="tab-icon"> <!-- icon-home -->
+                        <img alt="图标" src="img/error-640x640.jpg"/>
+                    </span>
+                    <span class="tab-label">列表</span>
+                    <i class="tag bg-primary">2</i>
+                </a>
+                <a class="tab-item" href="btn.html">
+                    <span class="tab-icon"><img alt="图标" src="img/error-640x640.jpg"/></span>
+                    <span class="tab-label">按钮按钮</span>
+                    <i class="reddot bg-primary"></i>
+                </a>
+            </div>
+        </nav>
+        <!-- footer bar end -->
+
+        <!-- 主体内容 -->
+        <div class="content">
+            <!-- content main 让版权保持在底部 -->
+            <div class="content-main">
+                <!-- <div class="cont-block" style="height: 100px"></div> -->
+                <!-- 正文开始 -->
+                <div class="bar-tabs">
+                    <div class="tabs-bar bg-white">
+                        <a class="tab-item active">选项卡<i class="reddot bg-primary"></i></a>
+                        <a class="tab-item">选项卡</a>
+                        <a class="tab-item">选项卡</a>
+                    </div>
+                </div>
+                
+                <div class="cont-block bg-white border-b border-t">
+                    <div class="cont-title">tab按钮，高度随父级高度变化而变化</div>
+                    <div class="tabs-bar bg-white">
+                        <a class="btn-item active">选项卡</a>
+                        <a class="btn-item">选项卡<i class="reddot bg-primary"></i></a>
+                        <a class="btn-item">选项卡</a>
+                    </div>
+                    <div class="tabs">
+                        <div class="tab active"></div>
+                    </div>
+                    <div class="cont-tips">主题颜色的定义在themes里</div>
+                </div>
+
+                <div class="cont-block" style="height: 800px"></div>
+                
+            </div>
+            <!-- content-main end -->
+        
+            <!-- 版权信息 -->
+            <div class="copyright-cont">版权信息</div>
+        </div>
+        <!-- content end -->
+
+    <!-- </div> -->
+    <!-- page end -->
+    
+    <script src="js/core/zepto.js"></script>
+</body>
+</html>

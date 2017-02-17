@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/tingyun-rum.js"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="x-dns-prefetch-control" content="on"/>
+    <title>Modal</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css?=13" />
+</head>
+<body>
+    <!-- 单页面在外面包裹一层page -->
+    <!-- <div class="page"> -->
+        
+        <!-- 顶部标题 -->
+        <div class="bar-header">
+            <a class="bar-back fl" href="javascript:history.go(-1);">返回</a>
+            <h1 class="bar-title">Toast 提示</h1>
+        </div>
+        <!-- header bar end -->
+        
+        <!-- 底部导航 -->
+        <!-- footer bar end -->
+
+        <!-- 主体内容 -->
+        <div class="content">
+            <!-- content main 让版权保持在底部 -->
+            <div class="content-main">
+
+                <!-- 正文开始 -->
+                <div class="cont-block t-center mt-big">
+                    <h1 class="primary">Toast 提示</h1>
+                </div>
+                <div class="clearfix"></div>
+                <div class="cont-block mt-big">
+                    <a class="btn btn-default j-toast">Toast</a>
+                    <a class="btn btn-default j-success">Success</a>
+                    <a class="btn btn-default j-warning">Warning</a>
+                    <a class="btn btn-default j-topbar">Topbar</a>
+                    <a class="btn btn-default j-loadstart">Loading</a>
+                    <a class="btn btn-default j-miniload">Mini Load</a>
+                    <a href="javascript:location.reload();" class="btn">刷新</a>
+                </div>
+                <!-- 正文结束 -->
+                
+            </div>
+            <!-- content-main end -->
+        
+            <!-- 版权信息 -->
+            <div class="copyright-cont">版权信息</div>
+        </div>
+        <!-- content end -->
+    <!-- </div> -->
+    <!-- page end -->
+    
+    <script src="js/core/zepto.js"></script>
+    <script src="js/core/base.js"></script>
+    
+    <script>
+
+    $('.j-toast').bind('click', function(){
+        $.toast('测试信息');
+    });
+    $('.j-success').bind('click', function(){
+        $.success('成功提示');
+    });
+    $('.j-warning').bind('click', function(){
+        $.warning('警告提示');
+    });
+    $('.j-topbar').bind('click', function(){
+        $.topbar('顶部提示', 'bg-danger');
+    });
+    $('.j-loadstart').bind('click', function(){
+        $.loadStart('数据加载中');
+
+        setTimeout(function(){
+            $.loadEnd();
+        }, 1000);
+    });
+    $('.j-miniload').bind('click', function(){
+        $.loadStart();
+
+        setTimeout(function(){
+            $.loadEnd();
+        }, 1000);
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/tingyun-rum.js"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="x-dns-prefetch-control" content="on"/>
+    <title>Modal</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css?=12" />
+</head>
+<body>
+    <!-- 单页面在外面包裹一层page -->
+    <!-- <div class="page"> -->
+        
+        <!-- 顶部标题 -->
+        <div class="bar-header">
+            <a class="bar-back fl" href="javascript:history.go(-1);">返回</a>
+            <h1 class="bar-title">Modal 弹窗</h1>
+        </div>
+        <!-- header bar end -->
+        
+        <!-- 底部导航 -->
+        <!-- footer bar end -->
+
+        <!-- 主体内容 -->
+        <div class="content">
+            <!-- content main 让版权保持在底部 -->
+            <div class="content-main">
+
+                <!-- 正文开始 -->
+                <div class="cont-block t-center mt-big">
+                    <h1 class="primary">Modal 弹窗</h1>
+                </div>
+                <div class="clearfix"></div>
+                <div class="cont-block mt-big">
+                    <a class="btn btn-default j-alert">Alert</a>
+                    <a class="btn btn-default j-confirm">Confirm</a>
+                    <a class="btn btn-default j-prompt">Prompt</a>
+                    <a class="btn btn-default j-modal">Modal</a>
+
+                    <a class="btn btn-default j-actions">Actions</a>
+                    <a href="javascript:location.reload();" class="btn">刷新</a>
+                </div>
+                <!-- 正文结束 -->
+                
+            </div>
+            <!-- content-main end -->
+        
+            <!-- 版权信息 -->
+            <div class="copyright-cont">版权信息</div>
+        </div>
+        <!-- content end -->
+    <!-- </div> -->
+    <!-- page end -->
+    
+    <script src="js/core/zepto.js"></script>
+    <script src="js/core/base.js"></script>
+    
+    <script>
+
+    $('.j-alert').bind('click', function(){
+        $.alert('弹窗警告', function(){
+           $.modal({
+                text: '点击确定点击确定点击确定点击确定点击确定点击确定点击确定',
+           });
+        });
+    });
+
+    $(".j-confirm").bind('click', function(){
+
+        $.confirm('确认内容', function(){
+           $.modal({
+                text: '点击确定',
+           });
+        }, function(){
+           $.modal({
+                text: '点击取消',
+           });
+        });
+    });
+
+    $(".j-modal").bind('click', function(){
+        $.modal({
+            title: '自定义标题',
+            text: '自定义内容，内容两行以上的会变为左对齐。',
+            buttons: [{
+                label: '是的',
+                type: 'success'
+            }, {
+                label: '自定义',
+            }]
+       });
+    });
+
+    $('.j-prompt').bind('click', function(){
+        var title = '请输入验证码',
+            text = '<div class="modal-input cell-item">' + 
+            '<div class="item-inner"><input type="text" class="j-modal-input"></div>' +
+            '<i class="uicon-warn"></i>'+
+            '<div class="item-after border-l"><img class="img" src="img/vcode.jpg" alt=""></div>' +
+            '</div>';
+        $.prompt(title, text, function(value){
+            $.alert('您填写的是："' + value + '"');
+        });
+    });
+
+    $('.j-actions').bind('click', function(){
+        var actions = [{
+            label: '操作A',
+            onClick: function(){
+                $.alert('操作A');
+            }
+        }, {
+            label: '操作B',
+            onClick: function(){
+                $.alert('操作B');
+            }
+        }];
+
+        var cancel = {
+            label: '关闭',
+            onClick: function(){
+                $.alert('关闭');
+            }
+        }
+
+        $.actions(actions, cancel);
+    });
+    </script>
+</body>
+</html>

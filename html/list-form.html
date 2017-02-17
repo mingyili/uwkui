@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/tingyun-rum.js"></script>
+    <meta charset="utf-8"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="on" http-equiv="x-dns-prefetch-control"/>
+    <title>列表样式</title>
+    <link href="css/reset.css?=11" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <!-- 单页面在外面包裹一层page -->
+    <!-- <div class="page"> -->
+    <!-- 顶部标题 -->
+    <div class="bar-header">
+        <a class="bar-back fl" href="index.html">返回</a>
+        <a class="btn fr" >侧四</a>
+        <h1 class="bar-title">表单</h1>
+    </div>
+    <!-- header bar end -->
+    
+    <!-- 底部导航 -->
+    <nav class="bar-footer cell-item">
+        <!-- btns-inline  -->
+        <div class="item-inner">
+            <small>总金额</small>
+            <big class="primary" id="J_money">￥60.00</big>
+        </div>
+        <a class="btn j-buy">购买</a>
+        <a class="btn btn-warning" href="javascript:location.reload();">底部按钮</a>
+    </nav>
+    <!-- bar-footer end -->
+
+    <!-- 主体内容 -->
+    <div class="content">
+        <!-- content main 让版权保持在底部 -->
+        <div class="content-main">
+            
+            <!-- 正文开始 -->
+            <div class="search-cont search-focus border-t border-b">
+                <form class="search-inner" id="search">
+                    <div class="search-item">
+                        <i class="uicon-search"></i>
+                        <input class="search-input" type="text" id="search-input" placeholder="搜索">
+                        <a href="" class="uicon-close"></a>
+                    </div>
+                    <label class="search-holder" for="search-input">
+                        <div class="item-inner"><i class="uicon-search"></i>搜索</div>
+                    </label>
+                </form>
+                <a href="" class="search-cancel">取消</a>
+            </div>
+            <div class="search-cont border-t border-b">
+                <form class="search-inner">
+                    <div class="search-item">
+                        <i class="uicon-search"></i>
+                        <input class="search-input" type="text" id="search-input" placeholder="搜索">
+                        <a href="" class="uicon-close"></a>
+                    </div>
+                    <label class="search-holder" for="search-input"><span><i class="uicon-search"></i>搜索</span></label>
+                </form>
+                <a href="" class="search-cancel">取消</a>
+            </div>
+
+             <div class="list-cont">
+                <div class="list-item">
+                    <div class="item-label">￥</div>
+                    <div class="item-inner">
+                        <input type="money" class="input" placeholder="请输入钱数">
+                    </div>
+                    <i class="uicon-warn"></i>
+                </div> 
+            </div>
+
+            <div class="list-cont">
+                <div class="list-item">
+                    <div class="item-label">￥</div>
+                    <div class="item-inner">
+                        <input type="money" class="input" placeholder="请输入钱数">
+                    </div>
+                    <i class="uicon-warn"></i>
+                </div> 
+            </div>
+            <div class="list-title">数量</div>
+            <div class="list-cont">
+                <div class="list-item ">
+                    <div class="item-label">数量1</div>
+                    <div class="item-inner"></div>
+                    <div class="item-after">
+                        <div class="input-number">
+                            <i class="uicon-minus disabled"></i>
+                            <input class="input-num j_num" id="num1" type="quantity" value="2" max="12" min='2'>
+                            <i class="uicon-add"></i>
+                        </div>
+                        <!-- <input class="input-num j_num" type="quantity" value="1"  max="8" min='1'> -->
+                    </div>
+                </div>
+            </div>
+            <div class="list-cont">
+                <div class="list-item ">
+                    <div class="item-label">数量2</div>
+                    <div class="item-inner"></div>
+                    <div class="item-after">
+                        <div class="input-number">
+                            <i class="uicon-minus disabled"></i>
+                            <input class="input-num j_num" id="num2" type="quantity" value="2" max="12" min='2'>
+                            <i class="uicon-add"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-tips">底部说明</div>
+            
+            <div class="list-cont j-upload" style="min-height: 6.95rem;"></div>
+
+            <div class="list-title">单选</div>
+            <div class="list-cont">
+                <label class="list-item cell-link">
+                    <p class="item-inner">标题文本</p>
+                    <i class="uicon-warn"></i>
+                    <div class="item-after">
+                        <input type="radio" class="input-radio" name="radio" checked><i class="uicon-check"></i>
+                    </div>
+                </label>
+
+                <label class="list-item cell-link">
+                    <p class="item-inner">标题文本</p>
+                    <i class="uicon-warn"></i>
+                    <div class="item-after">
+                        <input type="radio" class="input-radio" name="radio"><i class="uicon-check"></i>
+                    </div>
+                </label>
+            </div>
+
+            <div class="list-title">多选</div>
+            <div class="list-cont">
+                <label class="list-item cell-link">
+                    <div class="item-media">
+                        <input type="checkbox" class="input-check" name="checkbox"><i class="uicon-check"></i>
+                    </div>
+                    <p class="item-inner">标题文本</p>
+                    <i class="uicon-warn"></i>
+                </label>
+                <label class="list-item cell-link">
+                    <div class="item-media">
+                        <input type="checkbox" class="input-check" name="checkbox" checked="checked"><i class="uicon-check"></i>
+                    </div>
+                    <p class="item-inner">标题文本</p>
+                    <i class="uicon-warn"></i>
+                </label>
+                <label class="list-item cell-link">
+                    <div class="item-media">
+                        <input type="checkbox" class="input-check" name="checkbox"><i class="uicon-check"></i>
+                    </div>
+                    <img alt="图标" class="item-img" src="img/error-640x640.jpg"/>
+                    <div class="item-inner">
+                        <p>这是主标题</p>
+                        <p class="item-subtitle">这是副标题</p>
+                    </div>
+                    <p class="item-after">尾标</p>
+                </label>
+            </div>
+
+            <div class="list-title">开关</div>
+            <div class="list-cont">
+                <label class="list-item ">
+                    <div class="item-label">开关</div>
+                    <div class="item-inner"></div>
+                    <div class="item-after">
+                        <input class="input-switch" type="checkbox" name="checkbox" checked>
+                    </div>
+                </label>
+            </div>
+            <div class="list-tips">底部说明</div>
+
+            <div class="cont-block">
+                <a href="" class="btn btn-success">确定</a>
+            </div>
+
+            <div class="list-cont">
+                <div class="list-item">
+                    <div class="item-label">手机号</div>
+                    <div class="item-inner">
+                        <input type="tel" class="input" placeholder="请输入手机号">
+                    </div>
+                    <i class="uicon-warn"></i>
+                    <div class="item-after">
+                        <a href="" class="btn btn-mini btn-plain btn-success">验证手机</a>
+                    </div>
+                </div> 
+                <div class="list-item list-fill-after ">
+                    <div class="item-label">验证码</div>
+                    <div class="item-inner">
+                        <input type="text" id="J-code" class="input" placeholder="请输入验证码">
+                    </div>
+                    <i class="uicon-warn"></i>
+                    <div class="item-after border-l">
+                        <img class="img" src="img/vcode.jpg" alt="">
+                    </div>
+                </div>
+                <div class="list-item list-fill-after">
+                    <div class="item-label">验证码</div>
+                    <div class="item-inner">
+                        <input type="text" class="input" placeholder="请输入验证码">
+                    </div>
+                    <i class="uicon-warn"></i>
+                    <div class="item-after border-l">
+                        <a href="" class="btn btn-default">发送验证码</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-title">文本域</div>
+            <div class="list-cont">
+                <div class="list-item">
+                    <div class="item-inner">
+                        <textarea class="textarea j-text" name="" rows="3" maxlength="20"></textarea>
+                        <div class="textarea-tips">0/20</div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-title">文本域</div>
+            <div class="list-cont">
+                <div class="list-item">
+                    <div class="item-inner">
+                        <textarea class="textarea j-text" name="" rows="3" maxlength="20"></textarea>
+                        <div class="textarea-tips">0/20</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="list-title">下拉选择 select</div>
+            <div class="list-cont">
+                <div class="list-item list-fill-before">
+                    <div class="item-label item-link">
+                        <select class="select" name="" id="">
+                            <option value="">+86</option>
+                            <option value="">+87</option>
+                            <option value="">+88</option>
+                        </select>
+                    </div>
+                    <div class="item-inner">
+                        <input type="tel" class="input" id="J-phone" placeholder="请输入号码">
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-cont">
+                <div class="list-item item-link">
+                    <div class="item-inner">
+                        <select class="select" name="" id="">
+                            <option value="">选项A</option>
+                            <option value="">选项B</option>
+                            <option value="">选项C</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="list-item item-link">
+                    <div class="item-label">请选择</div>
+                    <div class="item-inner">
+                        <select class="select" name="" id="">
+                            <option value="">选项A</option>
+                            <option value="">选项B</option>
+                            <option value="">选项C</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-big"></div>
+            <!-- 正文结束 -->
+
+        </div>
+        <!-- content-main end -->
+        <!-- 版权信息 -->
+        <div class="copyright-cont">版权信息</div>
+    </div>
+
+    <!-- content end -->
+    <!-- </div> -->
+    <!-- page end -->
+    <script src="js/core/zepto.js"></script>
+    <script src="js/core/base.js"></script>
+    
+    <script>
+        $('.j-upload').uploader();
+
+        $('.j-text').wathcLength();
+
+        $('.j_num').on('change', function(e){
+            console.log(e);
+            var num = $(this).val(),
+                money = num*100;
+            
+            console.log(num);
+            $('#J_money').text('￥' + money);
+        });
+
+        $('.j-buy').bind('click', function(){
+
+            var _this = $('#J-phone'),
+                value = _this.val();
+
+            if ( !$.isPhone(value) ) {
+                $.warning('手机格式不对');
+                _this.errorInput();
+            }
+
+        });
+        /*setTimeout(function(){
+            window.close();
+            window.open('list-text.html', 'new_dd');
+        }, 1000);*/
+    </script>
+</body>
+</html>

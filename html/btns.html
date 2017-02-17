@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/tingyun-rum.js"></script>
+    <meta charset="utf-8"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="on" http-equiv="x-dns-prefetch-control"/>
+    <title>按钮样式</title>
+    <link href="../css/reset.css?=14" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <!-- 单页面在外面包裹一层page -->
+    <!-- <div class="page"> -->
+    <!-- 顶部标题 -->
+<!--     <div class="bar-header">
+    <a class="bar-back fl" href="javascript:history.go(-1);">返回</a>
+    <h1 class="bar-title">按钮</h1>
+</div> -->
+    <!-- header bar end -->
+    
+    <!-- 底部导航 -->
+    <!-- <nav class="bar-footer">
+        <a class="btn" href="javascript:location.reload();">底部按钮</a>
+    </nav> -->
+    <nav class="bar-footer btns-inline">
+        <!-- btns-inline > btn 均匀布局的btns -->
+        <a class="btn">按钮2.1</a>
+        <a class="btn">按钮2.1</a>
+
+        <!-- btns-inline > btn & btn-fill 填充的均匀布局的btns -->
+        <!-- <a class="btn btn-fill">按钮2.1</a>
+        <a class="btn btn-fill btn-warning">按钮2.1</a> -->
+
+        <!-- cell-item > item-inner(t-right) > btn & btn-base/btn-mini 左右边距.75的内容可控制方向 -->
+        <!-- <div class="item-inner">
+            <a class="btn btn-mini">按钮1</a>
+        </div> -->
+
+        <!-- cell-item > item-inner + btn & btn-fill 文本信息加填充按钮 -->
+        <!-- <div class="item-inner"></div>
+        <a class="btn btn-fill">按钮2.1</a>
+        <a class="btn btn-warning btn-fill">按钮2.2</a> -->
+
+        <!-- cell-item > (item-inner & fill > tabs-bar) + btn & btn-fill 
+            导航加填充按钮 -->
+        <!-- <div class="item-inner fill">
+            <div class="tabs-bar">
+                <a class="tab-item" href="{$home_url}?cid={$sid}">
+                    <i class="tab-icon icon-home"></i>
+                    <i class="tab-icon icon-home-fill" hidden></i>
+                    <span class="tab-label">首页</span>
+                </a>
+                <a class="tab-item" href="{$catslist_url}&t=item">
+                    <i class="tab-icon icon-class"></i>
+                    <i class="tab-icon icon-class-fill" hidden></i>
+                    <span class="tab-label">分类</span>
+                </a>
+            </div>
+        </div> 
+        <a class="btn btn-fill">按钮2.1</a>
+        <a class="btn btn-warning btn-fill">按钮2.2</a> -->
+
+    </nav>
+    <!-- bar-footer end -->
+
+    <!-- 主体内容 -->
+    <div class="content">
+        <!-- content main 让版权保持在底部 -->
+        <div class="content-main">
+            
+            <!-- 正文开始 -->
+            <a href="javascript:history.go(-1);" class="btn-gotop"><i class="uicon-gotop"></i></a>
+            <a href="javascript:history.go(-1);" class="btn-back">
+                <i class="uicon-gotop" hidden></i>
+            </a>
+            <div class="cont-block">
+                <a class="btn btn-fill">按钮1.1</a>
+                <a class="btn btn-round">按钮1.2</a>
+            </div>
+            <div class="cont-block btns-inline">
+                <button class="btn">按钮2.1</button>
+                <a class="btn">按钮2.2</a>
+            </div>
+            <div class="cont-block btns-inline">
+                <button class="btn btn-fill">按钮2.1</button>
+                <a class="btn btn-fill">按钮2.2</a>
+            </div>
+            <div class="cont-block">
+                <a class="btn btn-inline">按钮3.1</a>
+                <a class="btn btn-inline">按钮3.2</a>
+            </div>
+            <div class="cont-block">
+                <a class="btn btn-mini btn-round">按钮3.1</a>
+                <a class="btn btn-mini btn-round">按钮3.2</a>
+                <a class="btn btn-mini">按钮3.2</a>
+                <a class="btn btn-mini">按钮3.2</a>
+            </div>
+            <div class="cont-block">
+                <a class="btn btn-base">按钮3.1</a>
+                <a class="btn btn-base">按钮3.2</a>
+            </div>
+            <div class="mt-big"></div>
+            <!-- 正文结束 -->
+
+        </div>
+        <!-- content-main end -->
+        <!-- 版权信息 -->
+        <div class="copyright-cont">版权信息</div>
+    </div>
+
+    <!-- content end -->
+    <!-- </div> -->
+    <!-- page end -->
+    <script src="js/core/zepto.js">
+    </script>
+</body>
+</html>

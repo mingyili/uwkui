@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/tingyun-rum.js"></script>
+    <meta charset="utf-8"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="on" http-equiv="x-dns-prefetch-control"/>
+    <title>文字line-height test</title>
+    <link href="css/reset.css?=11" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <!-- 单页面在外面包裹一层page -->
+    <!-- <div class="page"> -->
+    <!-- 顶部标题 -->
+    <div class="bar-header">
+        <a class="bar-back fl" href="javascript:history.go(-1);">返回</a>
+        <h1 class="bar-title">行高差异测试</h1>
+    </div>
+    <!-- header bar end -->
+    
+    <!-- 底部导航 -->
+    <!-- bar-footer end -->
+
+    <!-- 主体内容 -->
+    <div class="content">
+        <!-- content main 让版权保持在底部 -->
+        <div class="content-main t-center">
+            
+            <!-- 正文开始 -->
+            <div class="cont-title">line-hegiht解决方案测试</div>
+            <div class="cont-block" style="font-size: 0;">
+                <span class="bg-primary" style="display:inline-block; line-height: 1; font-size: 16px; padding: 10.2px 20px 9.8px;">16px文字居中</span>
+
+                <span class="bg-warning" style="display:inline-block;  line-height: 1; font-size: 16px; padding: 10px 20px 10px;">16px文字居中</span>
+            </div>
+
+            <div class="cont-block" style="font-size: 0;">
+                <span class="bg-primary" style="display:inline-block; line-height: 1; font-size: 15px; padding: 10.3px 20px 9.7px;">15px文字居中</span>
+
+                <span class="bg-warning" style="display:inline-block;  line-height: 1; font-size: 15px; padding: 10px 20px 10px;">15px文字居中</span>
+            </div>
+            
+            <div class="cont-block" style="font-size: 0;">
+                <span class="bg-primary" style="display:inline-block; line-height: 1; font-size: 14px; padding: 10.3px 20px 9.7px;">14px文字居中</span>
+
+                <span class="bg-warning" style="display:inline-block;  line-height: 1; font-size: 14px; padding: 10px 20px 10px;">14px文字居中</span>
+            </div>
+            
+            <div class="cont-title">line-hegiht: .9</div>
+            <div class="cont-block">
+                <div class="bg-primary" style="line-height: .9; font-size: .8rem;">文字line-height: .; font-size: .8rem</div>
+                
+                <div class="bg-danger mt-base" style="line-height: .9; font-size: 16px;">文字line-height: .9; font-size: 16px;</div> 
+ 
+                <div class="bg-warning mt-base" style="line-height: .9; font-size: 15px;">文字line-height: .9; font-size: 15px;</div> 
+
+                <div class="bg-danger mt-base" style="line-height: .9; font-size: 14px;">文字line-height: .9; font-size: 14px;</div>
+
+                <div class="bg-danger mt-base" style="line-height: .9; font-size: 12px;">文字line-height: .9; font-size: 12px;</div> 
+            </div>
+            
+            <div class="cont-title">line-hegiht: 1</div>
+            <div class="cont-block">
+                <div class="bg-primary" style="line-height: 1; font-size: .8rem;">文字line-height: 1; font-size: .8rem</div>
+                
+                <div class="bg-danger mt-base" style="line-height: 1; font-size: 16px;">文字line-height: 1; font-size: 16px;</div> 
+ 
+                <div class="bg-warning mt-base" style="line-height: 1; font-size: 15px;">文字line-height: 1; font-size: 15px;</div> 
+
+                <div class="bg-danger mt-base" style="line-height: 1; font-size: 14px;">文字line-height: 1; font-size: 14px;</div> 
+
+                <div class="bg-danger mt-base" style="line-height: 1; font-size: 12px;">文字line-height: 1; font-size: 12px;</div> 
+            </div>
+
+            <div class="cont-title">line-hegiht: 1.5</div>
+            <div class="cont-block">
+                <div class="bg-primary" style="line-height: 1.5; font-size: .8rem;">文字line-height: 1.5; font-size: .8rem; 1.2rem;</div>
+                
+                <div class="bg-danger mt-base" style="line-height: 1.5; font-size: 16px;">文字line-height: 1.5; font-size: 16px; 24px; </div> 
+ 
+                <div class="bg-warning mt-base" style="line-height: 1.5; font-size: 15px;">文字line-height: 1.5; font-size: 15px; 22.5px</div> 
+
+                <div class="bg-danger mt-base" style="line-height: 1.5; font-size: 14px;">文字line-height: 1.5; font-size: 14px; 21px</div> 
+                <div class="bg-danger mt-base" style="line-height: 1.5; font-size: 12px;">文字line-height: 1.5; font-size: 12px;</div> 
+            </div>
+
+            <div class="cont-title">line-hegiht: 1.6</div>
+            <div class="cont-block">
+                
+                <div class="bg-danger" style="line-height: 1.6; font-size: 16px;">文字line-height: 1.6; font-size: 16px; 25.6px;</div> 
+
+                <div class="bg-danger mt-base" style="line-height: 1.6; font-size: 15px;">文字line-height: 1.6; font-size: 15px; 24px;</div> 
+ 
+                <div class="bg-warning mt-base" style="line-height: 1.6; font-size: 14px;">文字line-height: 1.6; font-size: 14px; 22.4px;</div> 
+                <div class="bg-danger mt-base" style="line-height: 1.6; font-size: 12px;">文字line-height: 1.6; font-size: 12px;</div> 
+            </div>
+
+            <div class="cont-title">line-hegiht: 42px - 44px</div>
+            <div class="cont-block">
+                <div class="bg-primary" style="height: 42px; line-height: 42px;">文字42px展示</div>
+                <div class="bg-success mt-base" style="height: 43px; line-height: 43px;">文字43px展示</div>
+                <div class="bg-link mt-base" style="height: 44px; line-height: 44px;">文字44px展示</div>
+            </div>
+
+            <div class="cont-title">hegiht 整数和小数的差异</div>
+            <div class="cont-block" style="font-size: 0;">
+                <div class="bg-primary" style="display: inline-block; font-size: .8rem; height: 40px">
+                    40px高
+                </div>
+                <div class="bg-primary" style="display: inline-block; font-size: .8rem; height: 40.3px">
+                    40.3px高
+                </div>
+                <div class="bg-primary" style="display: inline-block; font-size: .8rem; height: 40.7px">
+                    40.7px高
+                </div>
+                <div class="bg-primary" style="display: inline-block; font-size: .8rem; height: 40.9px">
+                    40.9px高
+                </div>
+                <div class="bg-primary" style="display: inline-block; font-size: .8rem; height: 41px">
+                    41px高
+                </div>
+            </div>
+
+            <div class="cont-block">
+                <a href="" class="btn">刷新</a>
+            </div>
+            <div class="mt-big"></div>
+            <!-- 正文结束 -->
+
+        </div>
+        <!-- content-main end -->
+        <!-- 版权信息 -->
+        <div class="copyright-cont">版权信息</div>
+    </div>
+
+    <!-- content end -->
+    <!-- </div> -->
+    <!-- page end -->
+    <script src="js/core/zepto.js">
+    </script>
+</body>
+</html>
