@@ -1,0 +1,87 @@
+/*!
+ * uwkui
+ * Author: lmy
+ * Version: 1.0.0
+ * Last Update: 2017-02-07 06:22:45
+ */
+/**arrows*/
+/* === Search Bar === */
+.search-cont {
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+          align-items: center;
+  padding: 0.4rem 0.75rem;
+  background-color: #EFEFF4;
+}
+.search-cont .uicon-search {
+  display: inline-block;
+  width: 0.6rem;
+  margin-right: .25rem;
+  color: #999999;
+  vertical-align: -0.05rem;
+}
+.search-cont.search-focus .search-cancel {
+  display: block;
+}
+.search-cont.search-focus .search-holder {
+  display: none;
+}
+.search-inner {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  display: block;
+}
+.search-item .uicon-search,
+.search-item .uicon-close {
+  position: absolute;
+  top: 0;
+  padding: 0.35rem 0.575rem;
+}
+.search-item .uicon-search {
+  left: 0;
+}
+.search-item .uicon-close {
+  right: 0;
+}
+.search-item,
+.search-holder {
+  background-color: #fff;
+  border-radius: 0.2rem;
+  padding: .2rem 1.5rem;
+  font-size: 0.6rem;
+}
+.search-input {
+  padding: 0;
+  display: block;
+  width: 100%;
+  line-height: 1.43;
+}
+.search-holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  text-align: center;
+  color: #999999;
+  padding: .35rem;
+  line-height: 1;
+}
+.search-cancel {
+  display: none;
+  padding: 0.575rem 0.75rem;
+  margin: -0.575rem -0.75rem;
+  margin-left: 0;
+}
+.search-cancel:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.search-input:not(:valid) ~ .uicon-close {
+  display: none;
+}

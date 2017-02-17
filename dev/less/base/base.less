@@ -1,0 +1,83 @@
+// set base style
+body {
+    font-family: @font-family-default;
+    font-weight: @font-weight;
+    font-size: @font-size-default;
+    color: @color-text;
+    line-height: @font-line-height;
+    background: @color-bg;
+}
+
+a {
+    color: @color-link;
+    &:active {
+        color: @color-link-active;
+        //text-decoration: underline;
+    }
+}
+
+small {
+    font-size: 80%;
+    color: @color-text-gray;
+}
+big {
+    font-size: 120%;
+}
+
+[hidden] {
+   display: none; 
+}
+
+// Utility classes
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.clearfix {
+    .clearfix();
+}
+
+//左右空白
+.pd-lr {
+    padding-right: @side-spacing-lr;
+    padding-left: @side-spacing-lr;
+}
+
+//上下空白
+.pd-tb {
+    padding-top: @bar-side-spacing;
+    padding-bottom: @bar-side-spacing;
+}
+//上下空白大
+.pd-tb-big {
+    padding-top: @bar-side-spacing * 2;
+    padding-bottom: @bar-side-spacing * 2;
+}
+
+//没有上边距
+.mt-none {
+    margin-top: 0;
+}
+
+//基础上边距
+.mt-base {
+    margin-top: @side-spacing-tb;
+}
+
+//小上边距
+.mt-small {
+    margin-top: @side-spacing-tb / 2;
+}
+
+//大上边距
+.mt-big {
+    margin-top: @side-spacing-tb * 2;
+}
+
+//可以选择
+.canselect {
+    -webkit-touch-callout: default;
+    -webkit-user-select: text;
+}

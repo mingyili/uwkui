@@ -1,0 +1,92 @@
+//border-radius
+.r-none {
+    border-radius: 0;
+}
+.r-small {
+    border-radius: @border-radius-small;
+}
+.r-base {
+    border-radius: @border-radius-base;
+}
+.r-large {
+    border-radius: @border-radius-large;
+}
+.r-round {
+    border-radius: @border-radius-round;
+    border-radius: 100%;
+}
+
+/* 1px hack */
+.border-l:before,
+.border-t:before,
+.border-r:after,
+.border-b:after,
+.border:before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+}
+.border-t:before,
+.border-b:after {
+    left: 0;
+    width: 100%;
+    height: 1px;
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        -webkit-transform: scaleY(0.5);
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+        -webkit-transform: scaleY(0.33);
+    }
+}
+.border-r:after,
+.border-l:before {
+    top: 0;
+    height: 100%;
+    width: 1px;
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        -webkit-transform: scaleX(0.5);
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+        -webkit-transform: scaleX(0.33);
+    }
+}
+
+.border-t {
+    position: relative;
+    &:before {
+        background-color: @color-split;
+        top: 0;
+        -webkit-transform-origin: 0 0;
+    }
+}
+
+.border-b {
+    position: relative;
+    &:after {
+        bottom: 0;
+        background-color: @color-split;
+        -webkit-transform-origin: 0 100%;
+    }
+}
+
+.border-l {
+    position: relative;
+    &:before {
+        left: 0;
+        background-color: @color-split;
+        -webkit-transform-origin: 0 0;
+    }
+}
+
+.border-r {
+    position: relative;
+    &:after {
+        right: 0;
+        background-color: @color-split;
+        -webkit-transform-origin: 100% 0;
+    }
+}
+
+.border {
+    .border(all, @color-split, inherit);
+}

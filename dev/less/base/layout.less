@@ -1,0 +1,124 @@
+//layout 基础布局 默认 fixed布局
+body, html {
+    height: 100%;
+}
+
+.content {
+    min-height: 100%;
+    position: relative;
+}
+
+//页面有版权时
+.content-main {
+    min-height: 100%;
+    padding-bottom: @copyright-height;
+    padding-top: .1px;
+}
+
+//模块顶部标题
+.cont-title {
+    margin-top: .77em;
+    margin-bottom: .3em;
+    padding: 0 @side-spacing-lr;
+    color: @color-text-gray;
+    font-size: @font-size-small;
+
+    & + .cont-block {
+        margin-top: 0;
+    }
+}
+
+//模块底部说明
+.cont-tips {
+    margin-top: -@side-spacing-tb + .3rem;
+    color: @color-text-gray;
+    padding: 0 @side-spacing-lr;
+    font-size: @font-size-small;
+}
+
+//normal block 普通模块
+.cont-block {
+    margin: @side-spacing-tb 0; 
+    padding-left: @side-spacing-lr;
+    padding-right: @side-spacing-lr;
+
+    .cont-title {
+        margin: 0;
+        padding: @side-spacing-lr 0 @bar-side-spacing;
+    }
+    .cont-tips {
+        margin-top: 0;
+        padding: @bar-side-spacing 0;
+    }
+}
+
+//底部版权
+.copyright-cont,
+.idx-footer {
+    position: absolute;
+    bottom: 0;
+    height: @copyright-height;
+    width: 100%;
+    left: 0;
+
+    overflow: hidden;
+    color: @color-text-gray-light;
+    text-align: center;
+    font-size: @font-size-small - .1;
+    padding: @side-spacing-tb 0!important;
+}
+
+//header/footer
+.bar-header {
+    background: @bar-header-bg;
+    -webkit-backdrop-filter: blur(.25rem); //背景模糊
+    top: 0;
+    height: @bar-header-height;
+    .border(bottom, @border-default-color);
+
+    & ~ .content {
+        padding-top: @bar-header-height;
+
+        .btn-back {
+            top: @bar-header-height;
+        }
+    }
+
+}
+
+.bar-footer {
+    background-color: @bar-footer-bg;
+    bottom: 0;
+    height: @bar-footer-height;
+    & ~ .content {
+        padding-bottom: @bar-footer-height;
+        .copyright-cont,
+        .idx-footer {
+            bottom: @bar-footer-height;
+        }
+        
+        .btn-gotop {
+            bottom: @bar-footer-height;
+        }
+    }
+}
+
+.bar-header,
+.bar-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: @z-index-bar;
+    box-shadow: 0 0 5px rgba(0,0,0, .1);
+}
+
+//粘性元素
+/* .pos-sticky {
+    position: sticky;
+    z-index: @z-index-bar;
+    top: 0;
+}
+.bar-header ~ .content .pos-sticky{
+    top: @bar-header-height;
+    -webkit-backdrop-filter: blur(.25rem);
+} */

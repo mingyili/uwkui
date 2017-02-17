@@ -1,0 +1,318 @@
+.animate(@duration, @in, @out, @function:ease-in-out) {
+    -webkit-animation-duration: @duration;
+    -webkit-animation-timing-function: @function;
+    -webkit-animation-fill-mode: forwards;
+    
+    &.in {
+        -webkit-animation-name: @in;
+    }
+    &.out {
+        -webkit-animation-name: @out;
+    }
+}
+.clearfix() {
+    &:before, &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.ellipsis(@line) when (@line = 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ellipsis(@line) when not (@line = 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: @line;
+    word-break: break-all;
+    //height: @line-height*@line;
+}
+
+.scrollable() {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+//icon
+.icon(@name:icomoon) {
+    font-family: @name !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1em;
+    min-width: 1em;
+    display: inline-block;
+}
+.uicon(){
+    font-family: 'uicon'!important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1em;
+    min-width: 1em;
+    min-height: 1em;
+    display: inline-block;
+    //-webkit-text-stroke-width: 0.2px;
+}
+
+// Encoded SVG Background
+.encoded-svg-background(@svg) {
+    @url: `encodeURIComponent(@{svg})`;
+    background-image: url("data:image/svg+xml;charset=utf-8,@{url}");
+}
+
+// Preserve3D
+.preserve3d() {
+    -webkit-transform-style: preserve-3d;
+    -transform-style: preserve-3d;
+}
+
+//.5px 边框
+.border-content (@position) when not (@position =top) and not (@position =bottom) {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    //z-index: 1;
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        -webkit-transform: scaleX(0.5);
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+        -webkit-transform: scaleX(0.33);
+    }
+}
+
+.border-content (@position) when not (@position =left) and not (@position =right) {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    //z-index: 1;
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        -webkit-transform: scaleY(0.5);
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+        -webkit-transform: scaleY(0.33);
+    }
+}
+
+.set-border-top(@color:@color-split){
+    .border-content(top);
+    top: 0;
+    background-color: @color;
+    -webkit-transform-origin: 0 0;
+}
+.border(@position, @color:@color-split) when (@position =top) {
+    position: relative;
+    &:before {
+        .set-border-top(@color);
+    }
+}
+
+.set-border-left(@color:@color-split){
+    .border-content(left);
+    left: 0;
+    background-color: @color;
+    -webkit-transform-origin: 0 0;
+}
+.border(@position, @color:@color-split) when (@position =left) {
+    position: relative;
+    &:before {
+        .set-border-left(@color);
+    }
+}
+
+.set-border-bottom(@color:@color-split){
+    .border-content(bottom);
+    bottom: 0;
+    background-color: @color;
+    -webkit-transform-origin: 0 100%;
+}
+.border(@position, @color:@color-split) when (@position = bottom) {
+    position: relative;
+    &:after {
+        .set-border-bottom(@color);
+    }
+}
+
+.set-border-right(@color:@color-split){
+    .border-content(right);
+    right: 0;
+    background-color: @color;
+    -webkit-transform-origin: 100% 0;
+}
+.border(@position, @color:@color-split) when (@position = right) {
+    position: relative;
+    &:after {
+        .set-border-right(@color);
+    }
+}
+
+.border-radius(@radius) when (isnumber(@radius)) {
+    border-radius: @radius;
+    &:before{
+        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+            border-radius: @radius * 2;
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+            border-radius: @radius * 3;
+        }
+    }
+}
+
+.border-radius(@radius) when not (isnumber(@radius)) {
+    &:before{
+        border-radius: inherit;
+    }
+}
+
+.border(@position, @color:@color-split, @radius:inherit) when (@position = all) {
+    position: relative;
+    border-color: @color;
+    .border-radius(@radius);
+
+    &:before {
+        content: '';
+        top: 0;
+        left: 0;
+        //z-index: 1;
+        position: absolute;
+        box-sizing: border-box;
+        border-width: 1px;
+        border-style: solid;
+        border-color: inherit;
+        pointer-events: none;
+        
+        width: 100%;
+        height: 100%;
+        
+        -webkit-transform-origin: 0 0;
+        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+            width: 200%;
+            height: 200%;
+            -webkit-transform: scale(0.5);
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+            width: 303%;
+            height: 303%;
+            -webkit-transform: scale(0.33);
+        }
+    }
+}
+
+// For right and bottom
+.border-remove(@position) when not (@position =left) and not (@position =top) and not (@position =all) {
+    &:after {
+        display: none;
+    }
+}
+
+// For left and top
+.border-remove(@position) when not (@position =right) and not (@position =bottom) {
+    &:before {
+        display: none;
+    }
+}
+
+// For right and bottom
+.border-color(@position, @color) when not (@position =left) and not (@position =top) and not (@position =all){
+    &:after {
+        background-color: @color;
+    }
+}
+
+// For left and top
+.border-color(@position, @color) when not (@position =right) and not (@position =bottom) and not (@position =all) {
+    &:before {
+        background-color: @color;
+    }
+}
+// For all
+.border-color(@position, @color) when (@position = all) {
+    border-color: @color;
+}
+
+//flexbox
+.flexbox() {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex-wrap(@fw) {
+    -webkit-flex-wrap: @fw;
+    flex-wrap: @fw;
+}
+
+.flex-box(@fb) {
+    -webkit-box-flex: @fb;
+    -webkit-flex: @fb;
+    flex: @fb;
+}
+
+.flex-direction(@fd) {
+    -webkit-flex-direction: @fd;
+    flex-direction: @fd;
+}
+
+.flex-shrink(@fs) {
+    -webkit-flex-shrink: @fs;
+    flex-shrink: @fs;
+}
+
+.justify-content(@jc) {
+    -webkit-justify-content: @jc;
+    justify-content: @jc;
+}
+
+.align-items(@ai) {
+    -webkit-align-items: @ai;
+    align-items: @ai;
+}
+
+.align-content(@ai) {
+    -webkit-align-content: @ai;
+    align-content: @ai;
+}
+
+.align-self(@as) {
+    -webkit-align-self: @as;
+    align-self: @as;
+}
+
+
+/**arrows*/
+.arrow(@color, @size, @weight) {
+    display: inline-block;
+    height: @size;
+    width: @size;
+    border-width: @weight @weight 0 0;
+    border-color: @color;
+    color: transparent;
+    border-style: solid;
+}
+.arrow-top(@color:#C7C7CC, @size:.3rem, @weight:.1rem) {
+    -webkit-transform: rotate(-45deg);
+    .arrow(@color, @size, @weight);
+}
+.arrow-right(@color:#C7C7CC, @size:.3rem, @weight:.1rem) {
+    -webkit-transform: rotate(45deg);
+    .arrow(@color, @size, @weight);
+}
+.arrow-bottom(@color:#C7C7CC, @size:.3rem, @weight:.1rem) {
+    -webkit-transform: rotate(135deg);
+    .arrow(@color, @size, @weight);
+}
+.arrow-left(@color:#C7C7CC, @size:.3rem, @weight:.1rem) {
+    -webkit-transform: rotate(-135deg);
+    .arrow(@color, @size, @weight);
+}

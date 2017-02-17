@@ -1,0 +1,138 @@
+    // Variables
+@uwkuipath: '../less/';
+
+@import "@{uwkuipath}base/variables.less";
+@import "@{uwkuipath}base/font.less";
+
+// Mixins
+@import "@{uwkuipath}base/mixins.less";
+
+// Normalize & Base CSS
+@import "@{uwkuipath}base/rem.less";
+@import "@{uwkuipath}base/normalize.less";
+@import "@{uwkuipath}base/layout.less";
+
+// lib
+@import "@{uwkuipath}lib/uicon.less"; 
+@import "@{uwkuipath}lib/pages.less";
+@import "@{uwkuipath}lib/bars.less";
+@import "@{uwkuipath}lib/tags.less";
+@import "@{uwkuipath}lib/btns.less";
+@import "@{uwkuipath}lib/tabs.less";
+
+@import "@{uwkuipath}lib/grid.less";
+@import "@{uwkuipath}lib/lists.less";
+@import "@{uwkuipath}lib/cards.less";
+@import "@{uwkuipath}lib/forms.less"; 
+
+@import "@{uwkuipath}lib/loader.less";
+@import "@{uwkuipath}lib/modal.less";
+@import "@{uwkuipath}lib/popup.less";
+@import "@{uwkuipath}lib/msg.less";
+
+@import "@{uwkuipath}lib/border.less";
+@import "@{uwkuipath}lib/text.less";
+@import "@{uwkuipath}lib/animate.less";
+
+@import "@{uwkuipath}base/base.less";
+
+//导航
+.bar-footer .tab-item {
+    .tab-icon {
+        font-size: 1.1rem;
+    }
+    &.active {
+        border-bottom-color: transparent;
+        .tab-icon {
+            display: none;
+        }
+        [class$="-fill"] {
+            display: block;
+        }
+    }
+}
+
+/* 轮播 / tab 滑动切换样式 */
+.slider-cont, .tab-cont {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.slider-content {
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+.slider-indicators {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 0;
+    li {
+        display: inline-block;
+        font-size: 0;
+        width: .3rem; height: .3rem;
+        background-color: rgba(0, 0, 0, .3);
+        border-radius: .3rem;
+        margin-right: .3rem;
+        &.active {
+            background-color: @color-primary;
+        }
+    }
+}
+
+//商品列表样式
+@checkWidth: 2rem;
+.prd-list {
+    background-color: #fafafa;
+    &.hascheck {
+        .list-item {
+            padding-left: @checkWidth;
+            & + .list-item:before {
+                left: @checkWidth;
+            }
+        }
+    }
+    .item-check {
+        position: absolute;
+        width: @checkWidth; 
+        left: 0; top: 0; bottom: 0; z-index: 1;
+        .uicon-check {
+            position: absolute;
+            left: .5rem;
+            top: 50%;
+            margin-top: -.5em;
+        }
+    }
+}
+.prd-item {
+    line-height: 1.3;
+    background-color: @color-bg-gray;
+    .align-items(flex-start);
+    .prd-img {
+        width: 4.25rem;
+        height: 4.25rem;
+        margin-right: .5rem;
+        .img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .item-subtitle {
+        font-size: @font-size-default;
+        color: @color-text;
+        height: 2.6em;
+    }
+    .item-sku {
+        height: 1.3em;
+    }
+    .price {
+        font-size: @font-size-default + .05;
+        color: @color-primary;
+    }
+}
+.list-title + .prd-item:before,
+.prd-item + .list-tips:before {
+    display: none;
+}

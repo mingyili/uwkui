@@ -1,0 +1,7 @@
+/*!
+ * uwkui
+ * Author: lmy
+ * Version: 1.0.0
+ * Last Update: 2017-02-06 04:06:23
+ */
+!function(a,b){var c;b.shareywk=function(d,e,f){return(c=f||b.wx)?(c.config(a.wxConfig),c.error(function(a){}),void c.ready(function(){c.checkJsApi({jsApiList:["onMenuShareTimeline","onMenuShareAppMessage"],success:function(b){var c=b.checkResult;c.onMenuShareAppMessage&&c.onMenuShareTimeline&&a.setShare(d,e)}})})):"no wx"},a.setShare=function(d,e){if(("object"!=typeof d||d instanceof Array)&&(e=d,d={}),c.showOptionMenu(),e){if(!(e instanceof Array))return c.hideOptionMenu(),!1;c.hideMenuItems({menuList:e})}if(d=a.extend({title:document.title,desc:document.title,link:b.location.href,imgUrl:"",type:"link",dataUrl:"",trigger:function(a){return!0},success:function(){return!0},cancel:function(){return!0},fail:function(a){return!0}},d),a.wxConfig.shareUniKey&&d.link.indexOf("UniqueKey=")<=-1){a.wxConfig.shareUniKey;d.link.indexOf("?")>-1?d.link+="&UniqueKey=":d.link+="?UniqueKey=",d.link+=a.wxConfig.shareUniKey}var f=d.success;d.success=function(a){if(d.data?f(d.data,a):f(a),"function"==typeof Collect){var b={},c={};b.collectUrl=collectUrl,b.active=2;var e=new Collect;c=e.count(b)}},c.onMenuShareAppMessage(d),c.onMenuShareTimeline(d),c.onMenuShareQQ(d),c.onMenuShareWeibo(d)}}($,window);

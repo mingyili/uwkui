@@ -1,0 +1,237 @@
+//解决label内fastclick问题
+label > * {
+    pointer-events: none;
+}
+
+input{
+    &:active{
+        background-color: @color-active-bg;
+        //-webkit-tap-highlight-color: initial;
+    }
+}
+
+.input,
+.select {
+    width: 100%;
+    display: block;
+    padding: 0;
+    margin: 0;
+    height: 1.5em;
+    line-height: 1.5em;
+}
+
+.input-check,
+.input-radio {
+    position: absolute;
+    display: none;
+    & + .uicon-check {
+        display: block;
+    }
+}
+
+//单选
+.input-radio {
+    & + .uicon-check:before {
+        //content: "";
+        display: block;
+        color: @color-active-bg;
+        width: @font-size-default;
+    }
+
+    &:checked + .uicon-check:before {
+        color: @active-color;
+        content: "\e900";
+    }
+}
+.input-item {
+    display: inline-block;
+    min-width: 4em;
+    margin-right: .5rem;
+}
+.radio {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 2rem;
+    padding: .2rem;
+    vertical-align: -.28em;
+    margin-right: .5em;
+    display: inline-block;
+    &:active {
+        background-color: @color-active-bg
+    }
+    .border(all, @color-text-gray-light, inherit);
+    &:checked:after {
+        content: '';
+        display: block;
+        height: 100%;
+        background-color: @active-color;
+        border-radius: inherit;
+    }
+}
+
+//多选
+.input-check {
+    & + .uicon-check:before {
+        content: "\e901";
+        font-size: 1rem;
+        width: 1rem;
+        display: block;
+        color: @color-text-gray-light;
+    }
+    
+    &:checked + .uicon-check:before {
+        color: @active-color;
+        content: "\e903";
+    }
+}
+
+
+//列表内按钮
+.list-item {
+    .btn {
+        margin-top: -.4rem;
+        margin-bottom: -.4rem;
+    }
+}
+
+//下拉列表
+.select {
+    padding-right: @side-spacing-lr;
+    box-sizing: content-box;
+}
+.item-link .select{
+    padding-right: @side-spacing-lr + .7rem;
+}
+
+//textarea
+.textarea {
+    width: 100%;
+}
+.textarea-tips {
+    text-align: right;
+    font-size: @font-size-small;
+    color: @color-text-gray;
+}
+
+
+//switch 开关
+.input-switch{
+    position: relative;
+    width: @switch-width; 
+    height: @switch-height;
+    border-radius: @switch-height;
+    margin: -.5rem  0;
+    background: #e5e5e5;
+    transition-duration: 300ms;
+    &:before{
+        content: "";
+        display: block;
+        box-sizing: border-box;
+        position: absolute;
+        top: @switch-space/2;
+        left: @switch-space/2;
+        width: @switch-width - @switch-space;
+        height: @switch-height - @switch-space;
+        border-radius: @switch-height - @switch-space;
+        background-color: #fdfdfd;
+        transition-duration: 300ms;
+        transform: scale(1);
+    }
+    &:after{
+        content: "";
+        display: block;
+        position: absolute;
+        top: @switch-space/2;
+        left: @switch-space/2;
+        width: @switch-height - @switch-space;
+        height: @switch-height - @switch-space;
+        border-radius: @switch-height - @switch-space;
+        background-color: #fff;
+        box-shadow: 0 .1rem 0.2rem rgba(0, 0, 0, 0.3);
+        transition-duration: 300ms;
+        transform: translateX(0);
+    }
+
+    &:checked {
+        background-color: lighten(@active-color, 5%);
+        &:before{
+            transform: scale(0);
+        }
+        &:after{
+            transform: translateX(@switch-width - @switch-height);
+        }
+    }
+}
+
+//错误提示
+.list-item .uicon-warn{
+    display: none;
+}
+.error {
+    color: @color-danger;
+    .item-label {
+        color: @color-danger;
+    }
+    .uicon-warn {
+        display: block;
+        font-size: 1rem;
+    }
+}
+
+.item-after {
+    .input-number {
+        margin: -(@list-height - @number-height)/2 0;
+    }
+}
+
+.input-number {
+    display: table;
+    text-align: center;
+    overflow: hidden;
+    .border(all, @number-border-color, .1rem);
+    color: @color-text;
+    width: 4.25rem;
+    
+    .uicon-add,
+    .uicon-minus {
+        display: table-cell;
+        vertical-align: middle;
+        font-size: .65rem;
+        width: 2em;
+        position: relative;
+        &:active{
+            background-color: @color-active-bg;
+        }
+        &.disabled {
+            color: @color-text-gray-light;
+        }
+    }
+    .uicon-add {
+        &:after{
+            .set-border-left(@number-border-color);
+        }
+    }
+    .uicon-minus {
+        &:after{
+            .set-border-right(@number-border-color);
+        }
+    }
+    .input-num {
+        display: table-cell;
+        vertical-align: middle;
+        position: relative;
+        z-index: 1;
+        padding: .1rem .2rem;
+        text-align: center;
+        width: 100%;
+        height: @number-height;
+        & + .point {
+            top: .2rem;
+            bottom: .2rem;
+            text-align: center;
+            padding: .2rem;
+            min-width: 1.1rem;
+        }
+    }
+}

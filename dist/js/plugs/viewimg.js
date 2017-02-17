@@ -1,0 +1,7 @@
+/*!
+ * uwkui
+ * Author: lmy
+ * Version: 1.0.0
+ * Last Update: 2017-01-19 06:03:18
+ */
+!function(a){"use strict";var b={},c=function(b){return this.$ele=a(b),this.init(),this};c.prototype={init:function(){return this.getThis().addUrl(this.url),this},getThis:function(){return this.name=this.$ele.attr("name")||"previewimg",this.url=this.$ele.data("original")||this.$ele.attr("src").replace(/(_\d{2,3}x\d{2,3}.jpg)$/g,""),this},addUrl:function(a){var c=this.name;b[c]||(b[c]=[]),b[c].indexOf(a)<0&&b[c].push(a)},preview:function(){var a=this.getThis();"undefined"!=typeof window.WeixinJSBridge&&WeixinJSBridge.invoke("imagePreview",{current:a.url,urls:b[a.name]})},setUrls:function(a){if(!a)return this;if(this.getThis(),"string"==typeof a)this.addUrl(a);else for(var b=a.length,c=0;b>c;c++)this.addUrl(a[c])},bindEvent:function(){var a=this;this.$ele.on("click",function(){a.preview()})}},a.fn.viewImg=function(b,d){return this.each(function(e,f){var g=a(this),h=g.data("viewImgData"),i=a.fn.viewImg.viewImgData[h];i||(h=a.fn.viewImg.viewImgData.index++,i=a.fn.viewImg.viewImgData[h]=new c(this),g.data("viewImgData",h)),"string"==typeof b&&i[b](d)})},a.fn.viewImg.viewImgData={index:0},a.fn.viewImg.Constructor=c,a(document).on("click",".view_img",function(){a(this).viewImg("preview")}).ready(function(){a(".view_img").viewImg()})}($);

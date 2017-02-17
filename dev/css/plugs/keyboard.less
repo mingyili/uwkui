@@ -1,0 +1,89 @@
+@import "../../less/base/variables.less";
+@import "../../less/base/mixins.less";
+
+//point 光标
+input {
+    & + .point {
+        position: absolute;
+        font-size: inherit;
+        top:@list-space-tb + .1rem;
+        bottom: @list-space-tb + .1rem;
+        color: transparent; 
+        display: none;
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            right: -3px;
+            top:0;
+            height: 100%;
+            width: 2px;
+            background-color: #446aef;
+            border-radius: 2px;
+        }
+    }
+    &.focus + .point {
+        display: block;
+        -webkit-animation: focus-blink 1s infinite;
+    }
+}
+
+@-webkit-keyframes focus-blink {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+//mkeyboard
+.mkeyboard {
+    position: fixed;
+    visibility: hidden;
+    display: none;
+    z-index: @z-index-keyboard;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    .keyboard-head {
+        background-color: #f0f1f3;
+        text-align: right;
+        .border(top, @color-split);
+    }
+    .keyboard-btn {
+        display: inline-block;
+        padding: .5rem .8rem;
+        &:active {
+            color: fadeout(@color-link, 60%);
+        }
+    }
+    .grids-cont {
+        text-align: center;
+        font-size: 1.5rem;
+        color: #333;
+    }
+    .grid-item {
+        line-height: 1rem;
+        padding:.9rem 0;
+        height: 2.8rem;
+    }
+    .btn-dot,
+    .btn-delet {
+        background-color: #d2d5da;
+        &:active {
+            background-color: #fff;
+        }
+    }
+    .btn-delet{
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 1.5rem;
+        height: 2.8rem;
+        .encoded-svg-background('<svg viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g class="transform-group"><g transform="scale(0.1953125, 0.1953125)"><path d="M83.03072 556.875434C59.795703 532.091417 59.714298 491.995415 83.03072 467.124566L320.083669 214.268086C335.589798 197.728215 366.547771 184.32 388.948316 184.32L880.654852 184.32C925.889817 184.32 962.56 220.959283 962.56 266.327198L962.56 757.672802C962.56 802.964128 925.966445 839.68 880.654852 839.68L388.948316 839.68C366.421551 839.68 335.736916 826.428711 320.083669 809.731914L83.03072 556.875434 83.03072 556.875434 83.03072 556.875434ZM112.912564 528.861207 112.912564 528.861207 112.912564 528.861207 349.965513 781.717684C357.830685 790.107202 377.678148 798.72 388.948316 798.72L880.654852 798.72C903.301034 798.72 921.6 780.386386 921.6 757.672802L921.6 266.327198C921.6 243.60182 903.289166 225.28 880.654852 225.28L388.948316 225.28C377.839663 225.28 357.707696 234.023985 349.965513 242.282316L112.912564 495.138793C104.402823 504.215851 104.412589 519.794567 112.912564 528.861207L112.912564 528.861207 112.912564 528.861207ZM643.363095 512 773.697016 381.666079 744.733921 352.702984 614.4 483.036905 484.066079 352.702984 455.102984 381.666079 585.436905 512 455.102984 642.333921 484.066079 671.297016 614.4 540.963095 744.733921 671.297016 773.697016 642.333921 643.363095 512 643.363095 512 643.363095 512Z" fill="#272636"></path></g></g></svg>');
+    }
+}

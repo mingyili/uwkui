@@ -1,0 +1,60 @@
+/* === Grid === */
+.grids-cont {
+    position: relative;
+    overflow: hidden;
+    line-height: 1.6;
+    .border(top);
+    &:after {
+        .set-border-left(@grid-border-color);
+    }
+    &.quarter {
+        .grid-item {
+            width: 25%;
+        }
+    }
+}
+
+.grid-item {
+    position: relative;
+    float: left;
+    padding: @side-spacing-lr + .4 @side-spacing-lr @side-spacing-lr + .4;
+    width: 100% / 3;
+    color: @grid-text-color;
+    text-align: center;
+    &:before {
+        .set-border-right(@grid-border-color);
+    }
+    &:after {
+        .set-border-bottom(@grid-border-color);
+    }
+    &:active {
+        color: inherit;
+        background-color: @color-active-bg;
+    }
+}
+.holder,
+.holder:active {
+    background-color: transparent;
+    color: @color-text-gray-light;
+    opacity: .5;
+}
+.grid-icon {
+    font-size: @grid-icon-size;
+    margin: 0 auto;
+    display: block;
+}
+.grid-img {
+    height: @grid-icon-size;
+    width: @grid-icon-size;
+    margin: 0 auto;
+    display: block;
+    background-size:cover; 
+}
+
+.grid-label {
+    display: block;
+    margin-top: .5em;
+    line-height: 1;
+    text-align: center;
+    font-size: @grid-text-size;
+}

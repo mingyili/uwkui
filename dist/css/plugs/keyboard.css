@@ -1,0 +1,109 @@
+/*!
+ * uwkui
+ * Author: lmy
+ * Version: 1.0.0
+ * Last Update: 2017-02-07 06:22:45
+ */
+/**arrows*/
+input + .point {
+  position: absolute;
+  font-size: inherit;
+  top: 0.675rem;
+  bottom: 0.675rem;
+  color: transparent;
+  display: none;
+}
+input + .point:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -3px;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #446aef;
+  border-radius: 2px;
+}
+input.focus + .point {
+  display: block;
+  -webkit-animation: focus-blink 1s infinite;
+}
+@-webkit-keyframes focus-blink {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.mkeyboard {
+  position: fixed;
+  visibility: hidden;
+  display: none;
+  z-index: 20;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+.mkeyboard .keyboard-head {
+  background-color: #f0f1f3;
+  text-align: right;
+  position: relative;
+}
+.mkeyboard .keyboard-head:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-transform-origin: 0 0;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .mkeyboard .keyboard-head:before {
+    -webkit-transform: scaleY(0.5);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .mkeyboard .keyboard-head:before {
+    -webkit-transform: scaleY(0.33);
+  }
+}
+.mkeyboard .keyboard-btn {
+  display: inline-block;
+  padding: .5rem .8rem;
+}
+.mkeyboard .keyboard-btn:active {
+  color: rgba(8, 148, 236, 0.4);
+}
+.mkeyboard .grids-cont {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+}
+.mkeyboard .grid-item {
+  line-height: 1rem;
+  padding: .9rem 0;
+  height: 2.8rem;
+}
+.mkeyboard .btn-dot,
+.mkeyboard .btn-delet {
+  background-color: #d2d5da;
+}
+.mkeyboard .btn-dot:active,
+.mkeyboard .btn-delet:active {
+  background-color: #fff;
+}
+.mkeyboard .btn-delet {
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: 1.5rem 1.5rem;
+          background-size: 1.5rem;
+  height: 2.8rem;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%20200%20200%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cg%20class%3D%22transform-group%22%3E%3Cg%20transform%3D%22scale(0.1953125%2C%200.1953125)%22%3E%3Cpath%20d%3D%22M83.03072%20556.875434C59.795703%20532.091417%2059.714298%20491.995415%2083.03072%20467.124566L320.083669%20214.268086C335.589798%20197.728215%20366.547771%20184.32%20388.948316%20184.32L880.654852%20184.32C925.889817%20184.32%20962.56%20220.959283%20962.56%20266.327198L962.56%20757.672802C962.56%20802.964128%20925.966445%20839.68%20880.654852%20839.68L388.948316%20839.68C366.421551%20839.68%20335.736916%20826.428711%20320.083669%20809.731914L83.03072%20556.875434%2083.03072%20556.875434%2083.03072%20556.875434ZM112.912564%20528.861207%20112.912564%20528.861207%20112.912564%20528.861207%20349.965513%20781.717684C357.830685%20790.107202%20377.678148%20798.72%20388.948316%20798.72L880.654852%20798.72C903.301034%20798.72%20921.6%20780.386386%20921.6%20757.672802L921.6%20266.327198C921.6%20243.60182%20903.289166%20225.28%20880.654852%20225.28L388.948316%20225.28C377.839663%20225.28%20357.707696%20234.023985%20349.965513%20242.282316L112.912564%20495.138793C104.402823%20504.215851%20104.412589%20519.794567%20112.912564%20528.861207L112.912564%20528.861207%20112.912564%20528.861207ZM643.363095%20512%20773.697016%20381.666079%20744.733921%20352.702984%20614.4%20483.036905%20484.066079%20352.702984%20455.102984%20381.666079%20585.436905%20512%20455.102984%20642.333921%20484.066079%20671.297016%20614.4%20540.963095%20744.733921%20671.297016%20773.697016%20642.333921%20643.363095%20512%20643.363095%20512%20643.363095%20512Z%22%20fill%3D%22%23272636%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+}

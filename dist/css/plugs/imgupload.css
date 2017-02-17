@@ -1,0 +1,90 @@
+/*!
+ * uwkui
+ * Author: lmy
+ * Version: 1.0.0
+ * Last Update: 2017-02-07 06:22:45
+ */
+/**arrows*/
+.img-upload {
+  padding: 0.575rem 0.75rem;
+  overflow: hidden;
+}
+.upload-cont {
+  margin-top: .5rem;
+}
+.upload-item,
+.upload-item-input,
+.upload-item-delet {
+  float: left;
+  margin-right: .45rem;
+  margin-bottom: .45rem;
+  width: 3.8rem;
+  height: 3.8rem;
+  background: no-repeat center center;
+  -webkit-background-size: cover;
+          background-size: cover;
+  position: relative;
+}
+.upload-item .uicon-minus {
+  position: absolute;
+  top: -0.45rem;
+  right: -0.4rem;
+  color: #fff;
+  font-size: .7rem;
+  width: 1.1rem;
+  line-height: 1;
+  padding: .2rem;
+  border-radius: 2rem;
+  background-color: #ef4f4f;
+}
+.upload-item-input {
+  border: 1px solid #d9d9d9;
+}
+.upload-item-input:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.upload-item-input:before,
+.upload-item-input:after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #D9D9D9;
+}
+.upload-item-input:before {
+  width: 2px;
+  height: 39.5px;
+}
+.upload-item-input:after {
+  width: 39.5px;
+  height: 2px;
+}
+.upload-input {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.upload-status:before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.upload-status.error .uicon-warn {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #ef4f4f;
+}

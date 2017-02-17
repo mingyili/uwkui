@@ -1,0 +1,181 @@
+/*!
+ * uwkui
+ * Author: lmy
+ * Version: 1.0.0
+ * Last Update: 2017-02-07 06:22:45
+ */
+/**arrows*/
+.select-close-cont {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+}
+.selectsku-block {
+  background-color: transparent;
+}
+.selectsku-cont {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: #fff;
+}
+.selectsku-cont .list-item {
+  padding-left: .6rem;
+  padding-right: .6rem;
+}
+.selectsku-cont .bar-footer {
+  position: relative;
+}
+.skuprd-cont {
+  margin-top: 0;
+}
+.skuprd-cont .item-img {
+  width: 4.5rem;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  margin-top: -2.5rem;
+  background-color: #fff;
+  position: relative;
+  border-color: #999999;
+  border-radius: 0.12rem;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .skuprd-cont .item-img:before {
+    border-radius: 0.24rem;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .skuprd-cont .item-img:before {
+    border-radius: 0.36rem;
+  }
+}
+.skuprd-cont .item-img:before {
+  content: '';
+  top: 0;
+  left: 0;
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: inherit;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-origin: 0 0;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .skuprd-cont .item-img:before {
+    width: 200%;
+    height: 200%;
+    -webkit-transform: scale(0.5);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .skuprd-cont .item-img:before {
+    width: 303%;
+    height: 303%;
+    -webkit-transform: scale(0.33);
+  }
+}
+.skuprd-cont .item-img img {
+  border: .2rem solid #fff;
+  border-radius: 0.12rem;
+  overflow: hidden;
+  vertical-align: middle;
+  max-height: 100%;
+}
+.skuprd-cont .item-after {
+  -webkit-align-self: stretch;
+  align-self: stretch;
+  padding: .5rem .6rem;
+  margin: -0.5rem -0.6rem;
+}
+.scroll-cont {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.sku_cont {
+  padding: .25rem 0 .75rem;
+}
+.sku_cont .cont-block {
+  padding: 0 .6rem;
+  margin: 0;
+}
+.sku_cont .cont-title {
+  color: #3d4145;
+  padding: .5rem 0 .2rem;
+}
+.sku_cont label {
+  display: inline-block;
+}
+.sku_cont label .span {
+  padding: 0 .75rem;
+  line-height: 1.4rem;
+  margin: 0 .25rem .3rem 0;
+  display: inline-block;
+  pointer-events: none;
+  font-size: .75rem;
+  position: relative;
+  border-color: #3d4145;
+  border-radius: 0.12rem;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .sku_cont label .span:before {
+    border-radius: 0.24rem;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .sku_cont label .span:before {
+    border-radius: 0.36rem;
+  }
+}
+.sku_cont label .span:before {
+  content: '';
+  top: 0;
+  left: 0;
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: inherit;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-origin: 0 0;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .sku_cont label .span:before {
+    width: 200%;
+    height: 200%;
+    -webkit-transform: scale(0.5);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .sku_cont label .span:before {
+    width: 303%;
+    height: 303%;
+    -webkit-transform: scale(0.33);
+  }
+}
+.sku_cont input {
+  display: none;
+}
+.sku_cont input:disabled + .span {
+  border-color: #ccc;
+  background-color: #ccc;
+  color: #fff;
+}
+.sku_cont input:checked + .span {
+  border-color: #ff5d5d;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20width%3D%22200px%22%20height%3D%22200px%22%20viewBox%3D%220%200%20200%20200%22%20enable-background%3D%22new%200%200%20200%20200%22%20xml%3Aspace%3D%22preserve%22%3E%3Cg%3E%3Cg%20transform%3D%22scale(0.1953125%2C%200.1953125)%22%3E%3Cpath%20fill%3D%22%23ff5d5d%22%20d%3D%22M195.124%2C1023.912c38.747%2C0.195%2C765.343%2C0%2C765.343%2C0c37.355%2C0%2C63.53-30.32%2C63.53-67.645V281.539C1023.997%2C281.539%2C229.874%2C992.502%2C195.124%2C1023.912z%20M749.863%2C938.763l-140.345-119.5l35.045-39.34l101.435%2C66.59l177.205-171.855l44.255%2C43.595L749.863%2C938.763z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  -webkit-background-size: 17px 17px;
+          background-size: 17px;
+  color: #ff5d5d;
+}

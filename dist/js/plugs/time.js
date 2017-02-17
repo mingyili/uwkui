@@ -1,0 +1,7 @@
+/*!
+ * uwkui
+ * Author: lmy
+ * Version: 1.0.0
+ * Last Update: 2017-01-19 06:03:18
+ */
+!function(a){"use strict";a.fn.countDown=function(b,c,d){return b?this.each(function(){function e(){0>=b?(d?d(f):f.removeClass("disabled").html("获取验证码"),g&&clearInterval(g),f.data("timer","")):c?c(f,b):f.html(b+"s后再发").addClass("disabled"),b--}var f=a(this),g=f.data("timer");g&&(clearInterval(g),g=""),e(),f.data("timer",g=setInterval(e,1e3))}):void 0},a.timeDiff=window.serverTime?(new Date).getTime()-window.serverTime:0,a.fn.countDownDate=function(b,c,d){return"function"==typeof b&&(d=b,b="",c=""),"function"==typeof c&&(d=c,c=""),c=c||"<i>DD</i>天<i>HH</i>小时<i>MM</i>分<i>SS</i>秒",this.each(function(){function e(){var b=h-(new Date).getTime()+a.timeDiff,e=c;if(0>=b)return clearInterval(f),void(d&&d());var i={"D+":Math.floor(b/864e5),"H+":Math.floor(b/36e5)%24,"M+":Math.floor(b/6e4)%60,"S+":Math.floor(b/1e3)%60};for(var j in i)new RegExp("("+j+")").test(e)&&(e=e.replace(RegExp.$1,1==RegExp.$1.length?i[j]:("00"+i[j]).substr((""+i[j]).length)));g.html(e)}var f,g=a(this),h=b||g.data("endtime");h||g.data("endtime",h=g.attr("rel")),h*=1e3,e(),f=setInterval(e,1e3)})},a(".count_down_date").countDownDate()}($);
