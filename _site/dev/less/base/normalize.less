@@ -1,0 +1,141 @@
+// Base styles
+// Use box sizing on this things!
+html, body, div, p, span, a, img, ol, ul, li, em, i, b, h1, h2, h3, h4, h5, h6, pre, section, article, aside, title, header, nav, menu, footer, form, label, audio, canvas, svg {
+    box-sizing: border-box;
+}
+
+body, dl, dd, h1, h2, h3, h4, h5, h6, p, form, pre {
+    margin: 0;
+}
+
+ol, ul, menu {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+// Prevent iOS and IE text size adjust after device orientation change,
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    outline: 0;
+}
+
+//
+// 1. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+audio, canvas, progress, video {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+//
+// Prevent modern browsers from displaying `audio` without controls.
+// Remove excess height in iOS 5 devices.
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+//
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+//
+// Remove the gray background color from active links in IE 10.
+a, label {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+//
+// Improve readability of focused elements when they are also in an
+a:active, a:hover {
+    outline: 0;
+}
+
+//
+p {
+    min-height: 1em;
+}
+
+//
+em, i {
+    font-style: normal;
+}
+
+//
+// Prevent `sub` and `sup` affecting `line-height` in all browsers.
+sub, sup {
+    font-size: 70%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+//
+// Remove border when inside `a` element in IE 8/9/10.
+img {
+    border: 0;
+    max-width: 100%;
+}
+
+// Forms
+// Known limitation: by default, Chrome and Safari on OS X allow very limited
+button, input, textarea, select {
+    color: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: normal;
+    outline: 0;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+// remove input number / select / date progress default style
+progress, input::-webkit-inner-spin-button, input::-webkit-outer-spin-button, input::-webkit-search-cancel-button, input::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+//
+// inconsistent `text-transform` inheritance for `button` and `select`.
+button, select {
+    text-transform: none;
+}
+
+//
+textarea {
+    resize: none;
+    overflow: auto;
+    line-height: inherit;
+}
+
+// Tables
+// Remove most spacing between table cells.
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}

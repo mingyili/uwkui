@@ -1,0 +1,92 @@
+/* === Pages === */
+//SPA单页面 绝对布局
+.page {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.page, 
+.popup {
+    .popup {
+        position: absolute;
+    }
+    
+    .content, .bar-header, .bar-footer {
+        position: absolute;
+    }
+    .content {
+        min-height: 1px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .bar-header ~ .content {
+        padding-top: 0;
+        top: @bar-header-height;
+    }
+    .bar-footer ~ .content {
+        padding-bottom: 0;
+        bottom: @bar-footer-height;
+        .copyright-cont,
+        .idx-footer {
+            bottom: 0;
+        }
+    }
+    .copyright-cont,
+    .idx-footer {
+        z-index: -1;
+        position: relative;
+        margin-top: -@copyright-height;
+    }
+}
+
+.scroll-inner {
+    min-height: 101%;
+    z-index: 1;
+}
+
+.top-list-loader,
+.bottom-list-loader {
+    text-align: center;
+    padding: .5rem;
+    line-height: 1;
+    height: 2rem;
+    overflow: hidden;
+}
+.top-list-loader {
+    margin-top: -2rem;
+    top:-1rem;
+    -webkit-transition: margin 400ms;
+}
+.top-list-loader.show{
+    margin-top: 0;
+}
+.bottom-list-loader {
+    display: none;
+}
+
+
+/* .page {
+    .flexbox();
+    .flex-direction(column);
+    height: 100%;
+    margin: 0 auto;
+    .bar-header,
+    .bar-footer {
+        position: relative;
+    }
+    .content {
+        .flex-box(1);
+        overflow: auto;
+        min-height: 1px;
+    }
+} */

@@ -1,0 +1,76 @@
+//
+// Badges
+// --------------------------------------------------
+//徽章
+.tag {
+    display: inline-block;
+    text-align: center;
+    padding: .2rem .3rem .15rem;
+    font-size: @font-size-mini;
+    min-width: .55rem;
+    min-height: .55rem;
+    line-height: 1;
+    border-radius: 5rem;
+    vertical-align: 1px;
+    
+    .border(all, rgba(0, 0, 0, 0), inherit);
+    //border: 1px solid rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, .15);
+}
+//红点
+.reddot{
+    display: inline-block;
+    width: .4rem;
+    height: .4rem;
+    border-radius: 1rem;
+    background-color: @color-danger;
+    vertical-align: .1rem;
+}
+
+//角标
+.tag-tl,
+.tag-br,
+.tag-tr,
+.tag-bl {
+    position: absolute;
+}
+.tag-tl {
+    top: 0;
+    left:0;
+    border-radius: 0 0 @border-radius-base 0;
+}
+.tag-tr {
+    top: 0;
+    right:0;
+    border-radius: 0 0 0 @border-radius-base;
+}
+.tag-br {
+    right: 0;
+    bottom:0;
+    border-radius: @border-radius-base 0 0 0;
+}
+
+.tag-bl {
+    left: 0;
+    bottom:0;
+    border-radius: 0 @border-radius-base 0 0;
+}
+
+//tab, btn下的tag
+.tabs-bar, .btn {
+    .tag, .reddot {
+        position: absolute;
+        padding: .1rem .2rem .05rem;
+        top: 10%;
+        margin-left: .4rem;
+    }
+}
+//grid下的tag
+.grid-item {
+    .tag, .reddot {
+        position: absolute;
+        padding: .1rem .2rem .05rem;
+        top: @side-spacing-tb;
+        margin-left: 1em;
+    }
+}

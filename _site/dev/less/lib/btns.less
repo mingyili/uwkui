@@ -1,0 +1,209 @@
+//Buttons
+@btn-space-tb: unit(@btn-height / 2 / @btn-fontsize - .5, em);
+@btn-mini-space-tb: (@btn-mini-height - @btn-mini-fontsize) / 2;
+@btn-base-space-tb: (@btn-base-height - @btn-base-fontsize) / 2;
+.btn {
+    display: block;
+    text-align: center;
+    font-size: @btn-fontsize;
+    padding-left: @side-spacing-lr;
+    padding-right: @side-spacing-lr;
+    line-height: 1;
+    padding-top: @btn-space-tb;
+    padding-bottom: @btn-space-tb;
+
+    background-color: @color-primary;
+    color: #fff;
+    .border(all, rgba(0,0,0,.15), @btn-radius);
+
+    button& {
+        width: 100%;
+        &.btn-inline, 
+        &.btn-mini {
+            width: auto;
+        }
+    }
+
+    & + .btn {
+        margin-top: .75rem;
+    }
+
+    &:active, 
+    &.active {
+        color: fadeout(#fff, 60%);
+        background-color: @color-primary-active;
+    }
+
+}
+.btn-hold {
+    opacity: .6;
+    //pointer-events: none;
+}
+
+.btn-inline,
+.btn-base,
+.btn-mini {
+    display: inline-block;
+    border-radius: @btn-radius/2;
+    &:before{
+        border-radius: @btn-radius/2;
+    }
+}
+.btn-inline + .btn-inline,
+.btn-base + .btn-base,
+.btn-mini + .btn-mini {
+    margin: auto;
+    margin-left: .5em;
+}
+
+.btn-mini {
+    font-size: @btn-mini-fontsize;
+    padding: @btn-mini-space-tb + .025 1.1em  @btn-mini-space-tb - .025;
+
+}
+.btn-base {
+    font-size: @btn-base-fontsize;
+    padding: @btn-base-space-tb + .025 1.1em  @btn-base-space-tb - .025;
+}
+
+//均匀布局
+&.btns-inline {
+    display: flex;
+    font-size: 0;
+    .btn {
+        width: 100%;
+        flex: 1;
+        margin: auto;
+        & + .btn:not(.btn-fill) {
+            margin-left: .5rem;
+        }
+    }
+}
+
+.btn-fill {
+    min-width: 5rem;
+    border-radius: 0;
+    height: 100%;
+    .border-remove(all);
+    & + .btn-fill {
+        margin: 0;
+    }
+}
+
+.btn-round {
+    border-radius: @btn-height * 2;
+    &:before{
+        border-radius: @btn-height * 3;
+    }
+}
+
+//按钮主题
+.btn-variant(@color-bg, @color-active) {
+    background-color: @color-bg;
+    &:active, &.active {
+        background-color: @color-active;
+    }
+    &.btn-plain {
+        color: @color-bg;
+        .border-color(all, @color-bg);
+        &:active, &.active {
+            color: @color-bg;
+        }
+    }
+}
+
+.btn-default {
+    color: @btn-default-color;
+    background-color: @btn-default-bg;
+    &:active, &.active {
+        color: fadeout(@btn-default-color, 60%);
+        background-color: @btn-default-active;
+    }
+}
+
+.btn-dark {
+    .btn-variant(@color-dark, @color-dark-active);
+}
+
+.btn-success {
+    .btn-variant(@color-success, @color-success-active);
+}
+.btn-danger {
+    .btn-variant(@color-danger, @color-danger-active);
+}
+.btn-warning {
+    .btn-variant(@color-warning, @color-warning-active);
+}
+.btn-link {
+    .btn-variant(@color-link, @color-link-active);
+}
+
+//线框按钮
+.btn-plain {
+    color: @color-primary;
+    background-color: transparent;
+    .border-color(all, @color-primary);
+    &:active, &.active {
+        color: @color-primary;
+        background-color: @color-active-bg;
+    }
+}
+
+.btn.disabled {
+    pointer-events: none;
+    .btn-variant(@color-disabled, @color-disabled);
+    &, &.btn-plain, &.btn-plain:active, &.btn-plain.active  {
+        color: @color-text-gray-light;
+    }
+}
+
+
+//返回按钮 黑色悬浮
+.btn-back,
+.btn-gotop {
+    position: fixed;
+    z-index: @z-index-bar;
+    background-color: rgba(0, 0, 0, .5);
+    color: rgba(255, 255, 255, .8);
+    display: block;
+    text-align: center;
+    width: @btn-height - .2rem;
+    height: @btn-height - .2rem;
+
+    &:active {
+        background-color: rgba(0, 0, 0, .8);
+    }
+}
+
+.btn-back {
+    //.icon();
+    top: 0;
+    left: @side-spacing-lr;
+    margin-top: @side-spacing-lr;
+    border-radius: 100%;
+
+    &:after {
+        //解决fiex布局时元素没有文字的时候变模糊
+        content: ".";
+        color: transparent;
+        .arrow-left(rgba(255, 255, 255, .8), .6rem, .1rem);
+        position: absolute;
+        top:50%;
+        left: 50%;
+        margin-left: -.28rem;
+        margin-top: -.35rem;
+    }
+   
+}
+
+//返回顶部
+.btn-gotop {
+    bottom: 0;
+    right: 0;
+    font-size: 1.2rem;  
+    line-height: 1;
+    padding: (@btn-height - 1.2rem )/2;
+    margin-bottom: @bar-base-height*2;
+    height: @btn-height;
+    border-radius: @btn-radius 0 0 @btn-radius;
+}

@@ -1,0 +1,36 @@
+/* === Cards === */
+.card {
+    margin-left: @bar-side-spacing;
+    margin-right: @bar-side-spacing;
+    border-radius: @border-radius-base;
+    box-shadow: 0 .05rem .1rem rgba(0, 0, 0, .05);
+}
+
+/* === Card List === */
+
+.cards-list {
+    margin-left: @bar-side-spacing;
+    margin-right: @bar-side-spacing;
+    background: none; 
+    
+    .list-item {
+        background-color: #fff;
+        margin-bottom: @bar-side-spacing;
+        border-radius: @border-radius-base;
+        overflow: hidden;
+        box-shadow: 0 .05rem .1rem rgba(0, 0, 0, .1);
+        .border-remove(top);
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.cards-list, 
+.card.list-cont {
+    .border-remove(top);
+    .border-remove(bottom);
+}
+.card.list-cont + .card.list-cont {
+    margin-top: @bar-side-spacing;
+}

@@ -1,0 +1,93 @@
+//Popup
+.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: @z-index-popup;
+    background: @color-bg;
+    .scrollable();
+    display: none;
+    &.out {
+        z-index: @z-index-popup - 1;
+    }
+}
+
+//分享，关注
+.wx-closeIcon,.wx-arrowIcon,.wx-sendIcon{
+    display:inline-block;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACECAMAAAApx3BFAAABDlBMVEUAAAAtLi////8wNTcwNTcwNTd0dHT5+fn///////////////////////////////////8wNTf///8wNTcwNTcwNTcaHR7///////////////////////////8wNTf////w8PD////////////y8vL///////////////////////////8wNTf///8wNTf///8wNTcwNTcvMzUwNTcuMzYmLC/////////////////////////////////////e3t7Ly8swNTf///9jZ2jLzM3o6elGS036+vtAREY5PkD09PTY2dm9v7+0treYm5x0d3lOUlRaXmDe39/HyMiQk5WJjI2Ag4Ssr7BpbW+lqKlxGorIAAAAQXRSTlMAEoDbxCwi0fnpBfDhEw72xKmjiYN0CAk3QSMb2pubYqmlhsiskFtUKq2fSfDS0HdsW0tEHw+2voxye2xNMZVtVunTfMIAAAXVSURBVHjazJppdxIxFIZvBZQCZSlbRSru2lWhttatmpd9LxTa+v//iGYGCEwmdazcc+b5wByYL89J8iaXJGQiVM6kgoFDIQ4DwVSmHCJm4iVyY/8NGchV0kHhIJiu5IiPeBIP3BwBd8tQdmaoeWa52lM6Qlrqjq6WoUxAGAlkLE0eR91yG3CzPM0eizs5zp7S+rkAlKXTEdu0wklK/JXUCa2dh4+Upeb4aoOW+RAQHgh8IGK2NDtupIVH0hu8lmbHj0+FZ55+5LY0O/rH0tDXytGbJWePmzLjYTwOLlfGJRGb5ZEh1+Lv1OpVsQRjxt0dTwJeJNEZCkWAZb40O56mhCdJdAZCkTol4rLUHSkrPEoC/ZZYkKX18zAKm0cOx9Cxd0nUGmodZ6g2ZrnWq42M+AdJjEdiTobLUbcMqdQMrmoLeosmG0368vcObOrXi+ysuymfAwbLrHLEElNh0bgew0FnqkYli2NUs8ypOvwKir6wGHah07xpC4tgjsPxmV4TVbRRJ6lby0t7AnfmY6HC4bhBmmXaVfJGSH41YaBrxyfN4kiaZdAhKRQTGGn27f5mcdQsQ8IoWe3AyK+WsAgxOOqWZaNkuwsTnYmYUWZw1C0zRsmB2fF2zfP59oqjbpkySTbGMLBcsqVoHfxQji6WCQqaJIeLjHT7g+vhbbULm54qfteVnNwP5ahZJn5SwCR5ZQmOb27b6q0V65ZYIkBrs5SOmqV0zNGhQbLRtJbpluNtcyqdFYe0LkvLUbeUjiQMklOg2WutvlXFhYLWZWk56pbS0SjZA/ptR6mmIqMgZqSjqbvbXVxp9WRXRUbrbk5MwWnU606j2rz3ByMtOLyYpqDL+kQ4GNqP1g2q2hTEReRF4ixCpsl8VGsLVxo1QJvMucifASgZl8XR0OA4xopkhhiJfAKAPWOB0WoJV6pYlSwTI7uQHN1RqnmTDBEfJVhsyuTcT5I/NzthWISJKP0/kmli48kmZhBR5X8kK8RFJAmguLNrt2QueB9Jhr+0emiSW/QYiMqv2ftLZokLGZqzPFEBiC22WZRk9U6mtiTDNosWmk95ItoCiiTJKElvVNlmchUa6ZgnigNJtfV3D0mGrT8VmmSevoUfS8m91S2rnldJ5hG5CyTjFInhgJ4A+6vb0cM6vFBrMG1Hq9AcxYneAAUZnHPHxv5l1QsNpo19FZrYEyJ6KXP9Hfisjkg8wXpEokKzWSCSM+QL6/ON4bDJDN+CqEKT2KE//HluEb0FHvvp2G4emvCBfB7Yg7EEvPPRAajN23n3HiEhB+Z7YMs/R8k28U28n8teyOc5wuSbQ/kZr2eOkaLdkLQvI+6T6w0zIrG3ZPFVRluyh5dE/rgo4tLr0ThJXspV0R9XbpycL6bwIi7IJ5eXHBTCiOXJIoovvrkGtsqZWmaiKPnnQt0y36DSUsQOkW+uJiryMSiz7USe/MgDYJfmvPtKfqSQQHSLfM7v9swlN2EgCKItVjOe8Uds+NlC2HIwWMg7wIZk8e5/qEjOIsoNylLeCUbdU101PXfQrN7fhHFLTJvUw87EWUNl4rzBZ6ZN5uFs4lzhYuL04NVHZBYX0OzTApr9AVG92fugP8aTAp4mTr0Az35D2Js2h6A/fZIGWhPnCoX6hXyBP5g2O4fbmjZ7D0fTJi31RZM8FhAr1tBoLil+aaFUjz4r8OpuOEL4NG2OENQH5Aty9Zg7gutNm2kBdXzq38fkBF5c12kBsTNpuhIacZ85B7ho+3XSArVJcyggF8+4vYeoLetNC9y1JbO9gRtMmWTloNR2mV0JVNJfC+kV8G9T5uiBq7Ritg1QSueywwlwK2UfTOsceChHnmwKQKm8H92MHgij8OoxmzyQt8KaTusAuEp4OdpVOcBaeIXS35mrqHvEdIgAeavb6P7iAOIgmyS6OgLQfKgOnf10AyBUqq+DbmiYKY6afd70X5GZWKtadO2Yia3wy8D9nFA6LVodHoNql/9ZIt8vqgt56HzXpgAAAABJRU5ErkJggg==) no-repeat;
+    background-size:auto 3.3rem;
+}
+.wx-closeIcon{
+    display:block;
+    width: .8rem;
+    height: .8rem;
+    background-position: -3.3rem 0;
+}
+.wx-arrowIcon{
+    width: 2.5rem;
+    height: 2.5rem;
+    background-position: -1.6rem -.8rem;
+    margin-left: -2.5rem;
+}
+.wx-sendIcon {
+    margin: 0 0 -.5rem .3rem    ;
+    width:1.6rem;
+    height: 1.6rem;
+}
+
+.guide-pop {
+    background:rgba(0, 0, 0, .5);
+    text-align: center;
+    .share-cont {
+        color: #fff;
+        padding: 1rem;
+        p {
+            margin: .5rem 0;
+        }
+    }
+    .follow-cont {
+        margin: 15vh auto 0;
+        padding: .5rem 1.2rem .8rem;
+        background-color: #fff;
+        display: inline-block;
+
+        img, iframe {
+            height: 8.2rem;
+            width: 8.2rem;
+            margin: .4rem 0 .1rem;
+        }
+    }
+
+    .wx-guide-close{
+        position: absolute;
+        background-color: rgba(0,0,0,.5);
+        bottom: 20%;
+        left: 50%;
+        padding: 1rem;
+        margin-left: -1.4rem;
+        margin-bottom: -1.4rem;
+        border-radius: 3rem;
+    }
+}
+.popup.slide {
+    background: transparent;
+    .overlay,
+    .content {
+        position: absolute;
+        left: 0;
+        width: 100%;
+    }
+    .overlay {
+        top: 0;
+        height: 100%;
+    }
+    .content {
+        top: auto;
+        bottom: 0;
+        z-index: 1;
+        background: #fff;
+    }
+}

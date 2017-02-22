@@ -1,0 +1,101 @@
+.bar-tabs {
+    height: @bar-tab-height;
+    background: #fff;
+    z-index: 1;
+}
+/* === Tabs === */
+.tabs-bar {
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    line-height: 1;    
+}
+.tab-item ,
+.btn-item {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+}
+.tab-item {
+    color: @tab-text-color;
+    &:active {
+        color: @color-text;
+        background-color: @color-active-bg;
+    }
+    &.active {
+        border-top: 2px solid transparent;
+        color: @color-primary;
+        border-bottom: 2px solid @color-primary; 
+    }
+}
+
+//导航图标
+.tab-icon {
+    font-size: @tab-icon-size;
+    display: block;
+    margin: 0 auto;
+}
+
+//导航文字
+.tab-label {
+    display: block;
+    font-size: @tab-text-size;
+    margin: .5em auto 0;
+}
+
+//按钮样式
+.btn-item {
+    color: @color-primary;
+    border: 1px solid @color-primary;
+    border-right-width: 0;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    
+    &:first-child {
+        border-radius: .25rem 0 0 .25rem;
+    }
+    &:last-child {
+        border-radius: 0 .25rem .25rem 0;
+        border-right-width: 1px;
+    }
+    &:active {
+        color: @color-primary;
+        background-color: @color-active-bg;
+    }
+    &.active {
+        background-color: @color-primary;
+        color: #fff;
+        &:active {
+            color: fadeout(#fff, 60%);
+            background-color: @color-primary-active;
+        }
+    }
+}
+
+// tab 内容展现
+.tabs {
+    .tab {
+        display: none;
+        min-height: 1rem;
+    }
+    .tab.active {
+        display: block;
+    }
+}
+//
+.fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+//
+.sticky-div {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}

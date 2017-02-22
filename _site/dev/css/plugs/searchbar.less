@@ -1,0 +1,88 @@
+@import "../../less/base/variables.less";
+@import "../../less/base/mixins.less";
+
+/* === Search Bar === */
+
+.search-cont {
+    .flexbox();
+    .align-items(center);
+    padding: .4rem @side-spacing-lr;
+    background-color: #EFEFF4;
+    .uicon-search {
+        display: inline-block;
+        width: @font-size-small;
+        margin-right: .25rem;
+        color: @color-text-gray;
+        vertical-align: -.05rem;
+    }
+    //foucus
+    &.search-focus {
+        .search-cancel {
+            display: block;
+        }
+        .search-holder {
+            display: none;
+        }
+    }
+}
+
+.search-inner {
+    position: relative;
+    .flex-box(1);
+    display: block;
+}
+
+.search-item {
+    .uicon-search, .uicon-close {
+        position: absolute;
+        top: 0;
+        padding: .35rem @list-space-tb;
+    }
+    .uicon-search {
+        left: 0;
+    }
+    .uicon-close {
+        right: 0;
+    }
+}
+
+.search-item, .search-holder {
+    background-color: #fff;
+    border-radius: @border-radius-base;
+    padding: .2rem 1.5rem;
+    font-size: @font-size-small;
+}
+
+.search-input {
+    padding: 0;
+    display: block;
+    width: 100%;
+    line-height: 1.43;
+}
+
+.search-holder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    text-align: center;
+    color: @color-text-gray;
+    padding: .35rem;
+    line-height: 1;
+}
+
+.search-cancel {
+    display: none;
+    padding: @list-space-tb @side-spacing-lr;
+    margin: -@list-space-tb -@side-spacing-lr;
+    margin-left: 0;
+    &:active {
+        background-color: @color-active-bg;
+    }
+}
+
+.search-input:not(:valid) ~ .uicon-close {
+    display: none;
+}

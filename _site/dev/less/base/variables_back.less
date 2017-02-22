@@ -1,0 +1,168 @@
+//
+// Variables
+// --------------------------------------------------
+
+// Type
+// --------------------------------------------------
+@font-family-default: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+@font-size-default: .75rem;
+@font-line-height: 1.5;
+@font-weight: 400;
+@font-weight-light: 300;
+@font-size-small: .65rem;
+@font-size-mini: .55rem;
+
+@font-size-big: .85rem;
+@font-size-large: 2rem;
+
+@font-icon-base: 1.2em;
+@font-icon-big: 1.1rem;
+
+//img
+@imgBaseUrl: "../img";
+
+// Colors
+// --------------------------------------------------
+
+// 主色
+@color-primary: #fe5722;
+@color-danger: #EF4F4F;
+@color-warning: #ffc600;
+@color-success: #04BE02;
+@color-disabled: #e9ebec;
+@color-dark: #798291;
+@color-wx-bg: #1e1d22;
+@color-light: #f8f8f0; //#FFFFF8;
+@color-bg-gray: #f8f8f8;
+
+@color-primary-active: #e74c1e; //darken(@color-primary, 5%);
+@color-danger-active: #C13E3E;
+@color-warning-active: #ffad00; //darken(@color-warning, 10%);
+@color-success-active: #039702;
+@color-dark-active: darken(@color-dark, 5%);
+
+@color-split: rgba(0, 0, 0, .1); //#eaeaea;  //分割线的颜色
+@color-bg: #f1f2f6; //页面背景色
+//@color-bg: #fbf9fe; //页面背景色
+@color-text: #3d4145; //文案色
+@color-text-secondary: #5f646e; //次级文案
+@color-text-gray: #999; //灰色文案
+@color-text-gray-light: #ccc; //更灰色文案
+
+//链接色
+@color-link: #0894ec; //@color-primary;链接色有可能不同于主色
+@color-link-active:  #0a8ddf; //@color-primary-active;链接色有可能不同于主色
+
+@color-active-bg: rgba(0, 0, 0, .1);
+
+// Layout
+// --------------------------------------------------
+@side-spacing-tb: .75rem;
+@side-spacing-lr: .75rem;
+
+// Bars
+// --------------------------------------------------
+@bar-base-height: 2.4rem;
+
+@bar-header-bg: rgba(255, 255, 255, 0.85);
+@bar-header-color: @color-primary;
+@bar-header-size: .85rem;
+@bar-header-height: @bar-base-height;
+
+@copyright-height: @side-spacing-tb*2 + @font-size-small;
+
+@bar-footer-color: @color-text-secondary;
+@bar-footer-bg: #fff;
+@bar-footer-height: 2.5rem;
+@bar-footer-size: @font-size-mini;
+
+@bar-tab-height: 2.2rem;
+
+@bar-side-spacing: .5rem;
+
+@tab-text-color: @color-text-secondary;
+@tab-icon-size: 1rem;
+@tab-text-size: @font-size-small - .05;
+
+
+// Cards
+// --------------------------------------------------
+@card-bg: #fff;
+
+// Buttons
+// --------------------------------------------------
+@button-font-size: 0.9rem;
+
+// Borders
+// --------------------------------------------------
+@border-radius-small: 0.12rem;
+@border-radius-base: 0.2rem;
+@border-radius-large: 0.5rem;
+@border-radius-round: 100rem;
+@border-default-color: @color-split;
+
+@border-t: -webkit-gradient(linear, left bottom, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, @border-default-color), to(@border-default-color));//border-top
+@border-b: -webkit-gradient(linear, left top, left bottom, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, @border-default-color), to(@border-default-color));//border-bottom
+@border-l: -webkit-gradient(linear, right top, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, @border-default-color), to(@border-default-color));//border-left
+@border-r: -webkit-gradient(linear, left top, right top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, @border-default-color), to(@border-default-color));//border-right
+
+@border-default-width: 1px;
+@border-default: @border-default-width solid @border-default-color;
+
+// Transitions
+// --------------------------------------------------
+@timing-fuction: cubic-bezier(.1,.5,.1,1); // Inspired by @c2prods
+
+//animations
+@pageDuration: 400ms;
+@duration: 320ms;
+
+
+//z-index
+@z-index-bar: 10;
+@z-index-page: 10;
+@z-index-keyboard: 20;
+@z-index-popup-mask: 800;
+@z-index-popup: 900;
+@z-index-mask: 1000;
+@z-index-modal: 1100;
+@z-index-toast: 1200;
+
+
+//btns
+@btn-radius: @border-radius-base;
+@btn-height: 2.1rem;
+@btn-fontsize: @font-size-big;
+
+@btn-mini-height: 1.25rem;
+@btn-mini-fontsize: @font-size-small;
+
+@btn-base-height: 1.5rem;
+@btn-base-fontsize: @font-size-default;
+
+@btn-default-color: @color-text-secondary;
+@btn-default-bg: #f7f7f7;
+@btn-default-active: #DEDEDE;
+
+//grid-column-count //几列
+@grid-border-color: @color-split;
+@grid-column-count: 3;
+@grid-icon-size: 1rem;
+@grid-text-size: @font-size-small;
+@grid-text-color: @color-text-secondary;
+
+//list列表最低高度
+@list-height: 2.2rem;
+@list-space-tb: (@list-height - @font-line-height * @font-size-default)/2;
+
+//input
+@active-color: @color-success;
+
+//Switch
+@switch-width: 2.6rem;
+@switch-height: 1.6rem;
+@switch-space: .1rem;
+
+//number
+@number-height: 1.2rem;
+@number-border-color: rgba(0,0,0,.2);
