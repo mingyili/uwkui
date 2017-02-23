@@ -67,16 +67,12 @@
             <div class="list-title">基础结构：item-meida, item-inner, item-after</div>
             <div class="list-cont">
                 <div class="list-item item-link">
-                    <p class="item-icon">
-                        <img alt="图标" class="view_img" src="../dist/img/logo.jpg" data-original="https://mingyili.github.io/uwkui/dist/img/logo.jpg"/>
-                    </p>
+                    <img alt="图标" class="item-icon view_img" src="../dist/img/logo.jpg" data-original="https://mingyili.github.io/uwkui/dist/img/logo.jpg"/>
                     <p class="item-inner">这是字体图标icon</p>
                     <a class="item-after" href="javascript:location.reload();">刷新</a>
                 </div>
                 <div class="list-item item-link">
-                    <p class="item-media item-icon">
-                        <img alt="图标" class="view_img" src="../dist/img/logo.jpg" data-original="https://mingyili.github.io/uwkui/dist/img/logo.jpg"/>
-                    </p>
+                    <img alt="图标" class="item-img-s view_img" src="../dist/img/logo.jpg" data-original="https://mingyili.github.io/uwkui/dist/img/logo.jpg"/>
                     <p class="item-title">这是标题很长的时候加nowarp截断很长很长</p>
                     <p class="item-after">这是尾部</p>
                 </div>
@@ -96,23 +92,23 @@
                     <img alt="图标" class="item-img-big view_img" src="../dist/img/logo.jpg" data-original="https://mingyili.github.io/uwkui/dist/img/logo.jpg"/>
                     <div class="item-inner">
                         <p><i class="tag bg-primary r-small">提示</i> 这是主标题标题项目标题项目标题项目标题项目</p>
-                        <small>绿色，M，加厚，等等</small>
-                        <p><small>价格：</small><i class="primary">￥100:00</i></p>
+                        <p class="item-desc">绿色，M，加厚，等等</p>
+                        <p class="primary"><i class="small">￥</i><i class="big">100</i>.00</p>
                     </div>
                 </div>
 
                 <div class="list-item">
-                   <div style="width: 100%;">
-                        <div style="width: 100%;">
-                            <img alt="图标" class="view_img" src="../dist/img/logo.jpg" data-original="https://mingyili.github.io/uwkui/dist/img/logo.jpg"/>
-                        </div>
-                        <div class="cell-item">
-                            <img alt="图标" class="item-img-s view_img" src="../dist/img/logo.jpg" data-original="https://mingyili.github.io/uwkui/dist/img/logo.jpg"/>
-                            <span class="item-title"><i class="tag bg-primary r-small">提示</i> 这是主标题标题项目标题项目标题项目标题项目</span>
-                            <span class="item-after">尾巴</span>
-                        </div>
-                        <small>绿色，M，加厚，等等</small>
-                        <p><small>价格：</small><i class="primary">￥100:00</i></p>
+                    <div class="block">
+                        <img alt="图标" class="view_img" src="../dist/img/logo.jpg" data-original="https://mingyili.github.io/uwkui/dist/img/logo.jpg"/>
+                    </div>
+                    <div class="block cell-item" style="line-height: 1;">
+                        <img alt="图标" class="item-img-s view_img va-1" src="../dist/img/logo.jpg" data-original="https://mingyili.github.io/uwkui/dist/img/logo.jpg"/>
+                        <p class="item-title"><i class="tag r-small">提示</i> 这是主标题标题项目标题项目标题项目标题项目</p>
+                        <p class="item-after">尾巴</p>
+                    </div>
+                    <div class="block">
+                        <p class="item-desc">绿色，M，加厚，等等</p>
+                        <p class="primary"><i class="small">￥</i><i class="big">100</i>.00</p>
                     </div>
                </div>
             </div>
@@ -147,6 +143,10 @@
             
             <div class="list-title">图片列表</div>
             <div class="list-cont">
+                <div class="list-item item-link">
+                    <p class="item-icon icon-gift"></p>
+                    <p class="item-inner">icon图标</p>
+                </div>
                 <div class="list-item">
                     <img alt="图标" class="item-img-s border view_img" src="../dist/img/logo.jpg" data-original="https://mingyili.github.io/uwkui/dist/img/logo.jpg"/>
                     <div class="item-inner">小图标</div>
@@ -173,9 +173,11 @@
 
             <div class="list-title">反向列表</div>
             <div class="list-cont">
-                <div class="list-item item-link">
-                    <p class="item-inner">反向icon图标</p>
-                    <p class="item-after item-icon"><i class="icon-gift"></i></p>
+             <div class="list-item item-link">
+                    <p class="item-inner">icon图标</p>
+                    <div class="item-after">
+                        <p class="item-img-i item-icon icon-gift"></p>
+                    </div>
                 </div>
                 <div class="list-item item-link">
                     <p class="item-inner">反向小图标</p>
