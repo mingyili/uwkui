@@ -27,6 +27,7 @@
 
     upload.prototype = {
         init : function () {
+            this.id = 1;
             this.imgData = {};
             this.count = 0;
             this.setDom().setDefault().bindEvent();
@@ -69,7 +70,7 @@
         //添加项
         addItem : function (data) {
             if (!data || data == 'null') return this;
-            var id = new Date().getTime(),
+            var id = 'upimages_' + this.id++,
                 url = typeof data == 'object' ? data.url : data;
             this.imgData[id] = data;
             var $newItem = $('<li class="upload-item popAnime view_img" hidden id="' + id + '" ' + 

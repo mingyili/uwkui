@@ -27,6 +27,7 @@
 
     upload.prototype = {
         init : function () {
+            this.id = 1;
             this.imgData = {};
             this.count = 0;
             this.setDom().setDefault().bindEvent();
@@ -69,22 +70,26 @@
         //添加项
         addItem : function (data) {
             if (!data || data == 'null') return this;
-            var id = new Date().getTime(),
+            var id = 'upimages_' + this.id++,
                 url = typeof data == 'object' ? data.url : data;
             this.imgData[id] = data;
-            var newItem = '<li class="upload-item popAnime view_img" hidden id="' + id + '" ' + 
+            var $newItem = $('<li class="upload-item popAnime view_img" hidden id="' + id + '" ' + 
                 'style="background-image: url(' + url + ')" data-original="' + url + '" >' + 
-                '<i class="uicon-minus j_del" data-id="' + id + '"></i></li>';
-            this.$files.append(newItem);
+                '<i class="uicon-minus j_del" data-id="' + id + '"></i></li>');
+            this.$files.append($newItem);
             this.setInfo(++this.count); 
+            $newItem.open();
             //添加图片预览
-            $.fn.viewImg && $('#' + id).viewImg().open();
+            $.fn.viewImg && $newItem.viewImg();
         },
         //删除项
         deletItem : function (id) {
             this.opt.onDelete && this.opt.onDelete.call(this, this.imgData[id]);
-            $('#' + id).close(true).viewImg('delUrl');
-            this.setInfo(--this.count)
+            var $targ = $('#' + id);
+            $targ.close(true);
+            //删除图片预览
+            $.fn.viewImg && $targ.viewImg('delUrl');
+            this.setInfo(--this.count);
             this.imgData[id] = '';
             delete this.imgData[id];  
         },

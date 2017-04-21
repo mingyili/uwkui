@@ -2,7 +2,7 @@
  * uwkui
  * Author: lmy
  * Version: 1.0.0
- * Last Update: 2016-06-30 09:47:21
+ * Last Update: 2017-04-20 03:49:24
  */
 /**arrows*/
 /* === Search Bar === */
@@ -18,7 +18,7 @@
 }
 .search-cont .uicon-search {
   display: inline-block;
-  width: 0.7rem;
+  width: 0.6rem;
   margin-right: .25rem;
   color: #999999;
   vertical-align: -0.05rem;
@@ -40,7 +40,7 @@
 .search-item .uicon-close {
   position: absolute;
   top: 0;
-  padding: 0.35rem 0.5rem;
+  padding: 0.35rem 0.575rem;
 }
 .search-item .uicon-search {
   left: 0;
@@ -51,9 +51,9 @@
 .search-item,
 .search-holder {
   background-color: #fff;
-  border-radius: 0.25rem;
+  border-radius: 0.2rem;
   padding: .2rem 1.5rem;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
 }
 .search-input {
   padding: 0;
@@ -75,12 +75,12 @@
 }
 .search-cancel {
   display: none;
-  padding: 0.5rem 0.75rem;
-  margin: -0.5rem -0.75rem;
+  padding: 0.575rem 0.75rem;
+  margin: -0.575rem -0.75rem;
   margin-left: 0;
 }
 .search-cancel:active {
-  background-color: #dfdfdf;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .search-input:not(:valid) ~ .uicon-close {
   display: none;

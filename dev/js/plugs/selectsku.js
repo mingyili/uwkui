@@ -21,16 +21,18 @@
             needFollow : false,
             needOpen : false,
             isFollow : w.API.isFollow,
-        }, 
+        },
         //静态参数
-        set = { 
+        set = {
             HOST : w.API.HOST,
             sid : w.API.sid,
             WexinUrl : w.API.WexinUrl || w.API.HOST + '/index.php/weixin/shop/show',
             dataUrl : w.API.dataUrl || w.API.HOST + '/index.php/weixin/shop/getprdsku',
             cartUrl : w.API.cartUrl || w.API.HOST + '/index.php/weixin/order/shoppingcart',
             zcUrl : w.API.zcUrl || w.API.HOST + '/index.php/weixin/order/order',
-            $cnum : $('#cnum, .cnum'), 
+            formSubUrl : w.API.formSubUrl || w.API.HOST + '/index.php/weixin/order/prdsubmitform',
+            identityJs : w.API.identityJs || w.API.HOST + '/uwkui/dist/js/plugs/identity.js',
+            $cnum : $('#cnum, .cnum'),
         },
         prdData = {},
         skuDom;
@@ -40,7 +42,7 @@
     var selectSku = function (ele, options) {
         this.opt = $.extend({}, defs, options);
         this.opt.buyUrl = this.opt.buyUrl || set.WexinUrl + "?key=OrderConfirm";
-            
+
         this.$ele = $(ele);
         this.init();
     };
@@ -81,19 +83,19 @@
             });
         },
         //存储商品数据
-        setData : function (data) { 
+        setData : function (data) {
             data.prdid = data.num_iid;
             data.link = this.opt.link;
             //优惠信息
             data.disnum = this.opt.disnum || 0;
             //粉丝特价
-            if (data.acttype === 2) { 
+            if (data.acttype === 2) {
                 if (data.disval.level.ActType === 'money') {
                     data.disnum = parseFloat(data.disval.level.DisMoney);
                 } else if (data.disval.level.ActType === 'discount') {
                     data.disnum = parseFloat(data.disval.level.Discount * 10);
                 }
-            } 
+            }
             //微团购
             else if (data.acttype == 3) {
                 if (data.disval.distype == 2) {
@@ -102,20 +104,25 @@
                     data.distype = 'price', data.disnum = data.disval.DisMoney;
                 }
             }
-            else data.distype = this.opt.distype || data.distype; 
+            else data.distype = this.opt.distype || data.distype;
             if (typeof data.disnum == 'object') data.distype = '';
 
             //处理skuData
             data.is_sku = JSON.parse(data.is_sku);
             if (data.is_sku) this.mapSkuData(data);
+            //表单数据
+            if (data.prd_form) {
+                this.opt.needOpen = true; //有表单必须打开
+                data.formHtml = this.mapPrdForm(data.prd_form);
+            }
             prdData[this.prdid] = data;
             return this;
         },
         //存储购买按钮数据
-        setBtnData : function () { 
+        setBtnData : function () {
             var _this = this, btns = this.opt.btns, data = [];
             if (typeof btns == 'string') {
-                if (btns.indexOf('buy') > -1) { 
+                if (btns.indexOf('buy') > -1) {
                     data.push({
                         type: 'buy',
                         style: 'btn-danger',
@@ -151,7 +158,7 @@
             return this;
         },
         //触发购买事件
-        trigger : function () { 
+        trigger : function () {
             if (typeof this.opt.btns === 'string') this.setBtnData();
             var btns = this.opt.btns,
                 len = btns.length, buyData, btn;
@@ -161,7 +168,7 @@
             }
             if (!len || len === 1) {
                 btn = !len ? btns : btns[0];
-                btn.text = '确定'; 
+                btn.text = '确定';
                 btn.style = 'btn-danger';
                 //需要选择数量
                 if (this.opt.needOpen) this.open();
@@ -175,48 +182,48 @@
             else if (len > 1) this.open();
         },
         //获取购买信息
-        getBuyData : function () { 
-            if (this.opt.needFollow && !this.opt.isFollow) {
-                $.follow();
-                return false;
-            }
+        getBuyData : function () {
+            if (this.opt.needFollow && !this.opt.isFollow) return $.follow();
             var data = prdData[this.prdid], error;
             if (data.unsale == "unsale") error = '对不起，该商品已下架';
             else if (data.prd_num == 0) error = '对不起，该商品已售罄';
-            if (error) {
-                $.toast(error);
-                return false;
-            }
+            if (error) return $.toast(error);
+
             var notopen = !skuDom || skuDom.$cont.css('display') == 'none' || skuDom.$cont.hasClass('out'),
-                skuData, buyData = {};
+                skuData, formData,
+                buyData = {};
             if (data.is_sku) {
                 //单sku的时候直接获取数据
                 if (data.isOneSku) buyData.skuid = data.is_sku.sku_id;
-                else { 
+                else {
                     if (notopen) {
                         this.open();
                         return false;
                     }
+                    //
                     skuData = this.getSkuData();
-                    if (typeof skuData == 'string') {
-                        $.toast(skuData);
-                        return false;
-                    }
+                    if (typeof skuData == 'string') return $.toast(skuData);
                     buyData.skuid = skuData.sku_id;
                 }
             }
+            //获取表单数据
+            if (data.prd_form) {
+                buyData.formid = this.getFormData();
+                if (!buyData.formid) return false;
+            }
+
             buyData.buynum = (skuDom && skuDom.$cont.data('nowid') == data.prdid) && skuDom.$buy_number.val() || 1;
             buyData.prdid = data.prdid;
             buyData.sina_uid = data.sina_uid;
             buyData.buyTail = w.API.buyTail || w.buy_tail || '';
-            this.close(), $.loadStart();
+            this.close();// $.loadStart();
             return buyData;
         },
         open : function () {
             if (!skuDom) this.setSkuDom();
             if (skuDom.$cont.data('nowid') != this.prdid) this.render();
             //事件需要重新绑定，避免互相影响；
-            this.setBtnDom(); 
+            this.setBtnDom();
             $.popup(skuDom.$cont);
             return this;
         },
@@ -231,7 +238,7 @@
                 skuDom.$prd_img.viewImg('setUrls', data.imgs || data.pic_url);
             }
             //优惠信息 'discount'为打折，'price'为减价
-            this.changePrice(data.price); 
+            this.changePrice(data.price);
             if (data.distype == "discount") skuDom.$prd_dis.html(data.disnum + '折').show();
             else if (data.distype == "price") skuDom.$prd_dis.html('立减￥' + data.disnum).show();
             else skuDom.$prd_dis.hide();
@@ -240,15 +247,23 @@
             this.changeQuantity(data.prd_num);
             //sku信息, 默认选中每项第一个sku
             if (data.is_sku && data.prdsku) {
-                skuDom.$sku_cont.html(data.prdsku).show(), this.bindSkuEvent();
+                skuDom.$sku_cont.html(data.prdsku).show();
+                this.bindSkuEvent();
                 data.skuType.map(function (e) {
                     var input = $('input[name="' + e + '"]:not([disabled])').eq(0);
                     if (input[0]) input[0].checked = true, input.trigger('change');
                 });
-            } 
-            else skuDom.$sku_cont.hide();
+            }
+            else skuDom.$sku_cont.off('change').hide();
+            //form信息
+            if (data.prd_form && data.formHtml) {
+                skuDom.$form_cont.html(data.formHtml).show();
+                this.bindFormEvent();
+            }
+            else skuDom.$form_cont.off('change').hide();
+
             //微团购、预售直接跳转、排除正处在微团购、预售页面的情况
-            if ((data.wbulk == 1 || data.is_presell == 1) && window.location.href.indexOf("?key=ShowPrd:") < 0) { 
+            if ((data.wbulk == 1 || data.is_presell == 1) && window.location.href.indexOf("?key=ShowPrd:") < 0) {
                 w.top.location.href = set.WexinUrl + "?key=ShowPrd:" + data.prdid + "&sid=" + set.sid;
                 return this;
             }
@@ -289,8 +304,9 @@
                     '</div>' +
                     '<div class="scroll-cont">' +
                         '<div class="sku_cont border-b"></div>' +
+                        '<div class="border-b" id="form_cont"></div>' +
                         '<div class="list-item">' +
-                            '<span class="item-inner">' + 
+                            '<span class="item-inner">' +
                                 '购买数量(库存<i class="prd_quantity">0</i>件)：' +
                             '</span>' +
                             '<div class="input-number">' +
@@ -299,7 +315,7 @@
                                 '<i class="uicon-add btn_add"></i>' +
                             '</div>' +
                         '</div>' +
-                        '<div class="mt-base"></div>' +
+                        '<div style="height: 30px;"></div>' +
                     '</div>' +
                     '<div class="bar-footer btns-inline btns-sell">' +
                         '<a class="btn btn-fill disabled">立即购买</a>' +
@@ -321,6 +337,7 @@
                 $old_price : $cont.find('.old_price'),
                 $prd_quantity : $cont.find('.prd_quantity'),
                 $sku_cont : $cont.find('.sku_cont'),
+                $form_cont : $cont.find('#form_cont'),
                 $buy_number : $cont.find('.buy_number'),
                 $btns_sell : $cont.find('.btns-sell'),
                 $btns_unsell : $cont.find('.btns-unsell'),
@@ -329,31 +346,31 @@
             skuDom.$buy_number.quantity('reset', true);
         },
         //改变图片
-        changeImg : function (img) { 
+        changeImg : function (img) {
             img && skuDom.$prd_img.attr("src", img);
             return this;
         },
         //改变价格
-        changePrice : function (oldprice, num) { 
-            var data = prdData[this.prdid], 
+        changePrice : function (oldprice, num) {
+            var data = prdData[this.prdid],
                 price = parseFloat(oldprice);
                 num = num || 1;
             //原价
-            if (!isNaN(price) && (data.distype == "discount" || data.distype == "price")) 
+            if (!isNaN(price) && (data.distype == "discount" || data.distype == "price"))
                     skuDom.$old_price.html('￥' + price.toFixed(2)).show();
             else skuDom.$old_price.hide();
             //现价
             if (!isNaN(price)) {
                 if (data.distype == 'price') price = price * num - data.disnum;
                 else if (data.distype == 'discount') price *= num * data.disnum * 0.1;
-                price = price < 0 ? 0 : price; 
+                price = price < 0 ? 0 : price;
                 skuDom.$prd_price.html('<i class="small">￥</i>' + price.toFixed(2));
-            } 
+            }
             else skuDom.$prd_price.html(oldprice);
             return this;
         },
         //改变库存
-        changeQuantity : function (quantity) { 
+        changeQuantity : function (quantity) {
             skuDom.$prd_quantity.text(quantity);
             if (quantity >= 1) {
                 this.opt.maxBuyNum && (quantity = Math.min(this.opt.maxBuyNum, quantity));
@@ -366,7 +383,7 @@
             return this;
         },
         //底部按钮
-        setBtnDom : function () { 
+        setBtnDom : function () {
             var $btns_sell = skuDom.$btns_sell,
                 _this = this, btns = this.opt.btns, len = btns.length, $btns = $();
             if (this.$btns) $btns = this.$btns;
@@ -387,7 +404,7 @@
             return this;
         },
         //获取 sku Dom
-        getSkuHtml : function (data) { 
+        getSkuHtml : function (data) {
             var $html = {};
             //遍历标签数据，将同一分类的sku项放到一起
             $.each(data.property_alias, function (i, e) {
@@ -404,14 +421,15 @@
             return data.skuType.map(function (e) {
                 return ('<div class="cont-block">' +
                     '<p class="cont-title">' + e + ':</p>' +
-                    $html[e].join(' ') +
+                    ($html[e] ? $html[e].join(' ') : '该属性下无可选项') +
                 '</div>');
             }).join('\n');
         },
         //sku选择事件
         bindSkuEvent : function () {
             var _this = this;
-            skuDom.$sku_cont.find('input:not([disabled])').on('change', function () {
+            //skuDom.$sku_cont.find('input:not([disabled])').on('change', function () {
+            skuDom.$sku_cont.off('change').on('change', 'input:not([disabled])', function () {
                 var data = _this.getSkuData();
                 if (data && typeof data === 'object') {
                     _this.changeImg(data.props_img).changePrice(data.price).changeQuantity(data.quantity);
@@ -419,12 +437,12 @@
             });
         },
         //匹配对应sku数据
-        getSkuData : function () { 
+        getSkuData : function () {
             var data = prdData[this.prdid], name, error;
             name = data.skuType.map(function (e) {
                 var $check = $('input[name="' + e + '"]:checked');
                 if ($check.length < 1) error = '请选择' + e;
-                return $check.val(); 
+                return $check.val();
             }).join(';');
             if (error) return error;
             else return data.isOneSku ? data.is_sku : data.is_sku[name] || {
@@ -442,7 +460,7 @@
                 imgs = [],
                 alias = {};
             //单sku
-            data.isOneSku = !len || len === 1; 
+            data.isOneSku = !len || len === 1;
             //汇总sku分类
             data.propertie1 && propertie.push(data.propertie1);
             data.propertie2 && propertie.push(data.propertie2);
@@ -452,7 +470,7 @@
             data.sku_dif_arr.map(function (e) {
                 var s = (e.c_id && 'c_') || (e.s_id && 's_') || (e.sku_c1_id && 'sku_c1_'),
                     id = e[s + 'id'] && (e[s + 'typeid'] + ':' + e[s + 'id']);
-                if (id) alias[id] = {}, 
+                if (id) alias[id] = {},
                     alias[id].typename = e[s + 'typename'],
                     alias[id].val = e[s + 'name'] || e[s + 'num'],
                     alias[id].num = data.isOneSku ? data.is_sku.quantity : 0;
@@ -478,30 +496,142 @@
             data.prdsku = this.getSkuHtml(data);
             return this;
         },
-        //默认购买事件
-        onBuy : function (data) {
-            var opt = this.opt;
-            if (data.skuid) {
-                w.top.location.href = opt.buyUrl + ":" + data.skuid + ":" + data.buynum + ":" + data.prdid + ":1:" + "&sid=" + set.sid + data.buyTail;
-            } else {
-                w.top.location.href = opt.buyUrl + ":0:" + data.buynum + ":" + data.prdid + ":0:" + "&sid=" + set.sid + data.buyTail;
+
+        ///验证选项
+        verifys : function (val, type) {
+            var list = {
+                tel : /^1[3|4|5|7|8][0-9]\d{8}$/, //电话
+                email : /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/, //邮箱
+                money : /^([1-9][\d]{0,9}|0)(\.|\.[\d]{1,2})?$/, //金钱，最多到十亿
+            };
+            if (!list[type]) return true;
+            return list[type].test(val);
+        },
+        //动态加载js文件
+        jsload : function (file, callack) {
+            var _doc = document.getElementsByTagName('head')[0],
+                js = document.createElement('script');
+            js.setAttribute('type', 'text/javascript');
+            js.setAttribute('src', file);
+            _doc.appendChild(js);
+
+            if (callack) js.onload = callack;
+        },
+        //表单单项验证
+        verifyItem : function () {
+            var obj = this,
+                formInData = prdData[obj.prdid].prd_form;
+            return function (i) {
+                obj.formError = '';
+                var _this = $(this),
+                    val = _this.val(),
+                    name = _this.attr('name'),
+                    type = _this.data('type'),
+                    isRequire = _this.data('require') - 0;
+
+                if (isRequire && !val) obj.formError = '请填写' + name;
+                else if (type == 'number' && isNaN(val)) obj.formError = '请填写正确格式的数字';
+                else if (type == 'id_no') {
+                    val = val.toUpperCase();
+                    if ($.checkIdentity(val)) obj.formError = '请填写正确格式的' + name;
+                }
+                else if (!obj.verifys(val, type)) obj.formError = '请填写正确格式的' + name;
+
+                if (obj.formError) {
+                    _this.focus();
+                    $.toast(obj.formError);
+                    return false;
+                }
+
+                if (typeof i == 'number') formInData[i].value = val;
             }
         },
+        getFormData : function () {
+            //获取表单数据，报错或没有返回false
+            skuDom.$form_cont.find('.form_item').each(this.verifyItem());
+            if (this.formError) return false;
+            var id = '', inData = prdData[this.prdid].prd_form;
+            $.ajax({
+                type : "POST",
+                url : set.formSubUrl,
+                data : {formData : inData},
+                async : false, //
+                success : function (msg) {
+                    var data = JSON.parse(msg);
+                    if (!data.errcode - 0) return id = data.formNum;
+                    return $.toast(data.errmsg);
+                }
+            });
+            return id;
+        },
+        bindFormEvent : function (data) {
+            skuDom.$form_cont.off('change').on('change', '.input', this.verifyItem());
+            return this;
+        },
+
+        mapPrdForm : function (data) {
+            if (!data || !data.length) return '';
+            var jsload = this.jsload,
+                getFormItem = function (item, i) {
+                var type = item.type,
+                    require = item.required - 0,
+                    attr = ' placeholder="请填写' + item.name + '" name="' + item.name + '" data-type="' + type + '" data-require="' + require + '"',
+                    html = '';
+
+                if (type == 'textarea') html = '<textarea class="textarea form_item" ' + attr + '></textarea>';
+                else if (type == 'id_no') {
+                    html = '<input class="input form_item" type="text" ' + attr + '>';
+                    //顺便加载身份验证js
+                    jsload(set.identityJs);
+                }
+                else if (type == 'select') {
+                    var opts = item.selectvalue = item.selectvalue.split('，');
+                    html = '<select class="select form_item" ' + attr + '>' +
+                            opts.map(function (e) {
+                                return '<option value="' + e + '">' + e + '</option>';
+                            }).join('\n') +
+                        '</select>';
+                }
+                else html = '<input class="input form_item" type="' + type + '" ' + attr + '>';
+                return html;
+            };
+
+            return data.map(function (e, i) {
+                return('<li class="list-item">' +
+                    '<p class="item-label">' + e.name + '</p>' +
+                    '<div class="item-inner">' + getFormItem(e, i) + '</div>' +
+                    (e.required - 0 ? '<i class="danger"> * </i>' : '') +
+                '</li>');
+            }).join('');
+        },
+        //默认购买事件
+        onBuy : function (data) {
+            var opt = this.opt,
+                href = '';
+            if (data.skuid)
+                href = opt.buyUrl + ":" + data.skuid + ":" + data.buynum + ":" + data.prdid + ":1:" + "&sid=" + set.sid + data.buyTail;
+            else
+                href = opt.buyUrl + ":0:" + data.buynum + ":" + data.prdid + ":0:" + "&sid=" + set.sid + data.buyTail;
+            if (data.formid) href += "&form_id=" + data.formid;
+            w.top.location.href = href;
+        },
         //加入购物车
-        onCart : function (data, ele) { 
+        onCart : function (data, ele) {
             var _this = this;
             //微博
-            if (!data.sina_uid) { 
+            if (!data.sina_uid) {
                 w.top.location.href = data.OauthUrl;
                 return this;
             }
+            $.loadStart();
             $.ajax({
                 type: "POST",
                 url: set.cartUrl,
                 data: {
-                    prd_id : data.prdid, 
+                    prd_id : data.prdid,
                     sku_id : data.skuid,
                     buy_num : data.buynum,
+                    form_id : data.formid,
                     sid : set.sid,
                     cid : _this.opt.cid,
                 },
@@ -517,9 +647,10 @@
             });
         },
         //众筹
-        onZc : function (data) { 
+        onZc : function (data) {
             var href = set.zcUrl + "?num=" + data.buynum + "&num_iid=" + data.prdid + "&is_donation=0&paid_type=2&helpbuy=2&sid=" + set.sid + data.buyTail;
             if (data.skuid) href += "&sku_id=" + data.skuid;
+            if (data.formid) href += "&form_id=" + data.formid;
             w.top.location.href = href;
         },
     };
@@ -545,7 +676,7 @@
             if (prdlink && ! options.link) options.link = prdlink;
             if (needFollow && !options.needFollow) options.needFollow = needFollow;
             if (needOpen && !options.needOpen) options.needOpen = needOpen;
-            
+
             if (!data) {
                 id = $.fn.selectSku.skuData.index++;
                 data = $.fn.selectSku.skuData[id] = new selectSku(this, options);
@@ -564,6 +695,6 @@
      * 必须存在prdid，用于标识插件，同一商品不会请求第二次数据
      */
     $(document).on('click', '.ywk-diybuy', function (e) {
-        $(this).selectSku(); 
+        $(this).selectSku();
     });
 })($, window);

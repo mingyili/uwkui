@@ -2,7 +2,7 @@
  * uwkui
  * Author: lmy
  * Version: 1.0.0
- * Last Update: 2017-02-22 06:09:04
+ * Last Update: 2017-04-20 03:49:24
  */
 @font-face {
   font-weight: normal;
@@ -1497,14 +1497,16 @@ button.btn.btn-mini {
   position: absolute;
   right: .7rem;
   top: 50%;
-  margin-top: -0.2rem;
+  margin-top: -0.15rem;
   pointer-events: none;
   -webkit-transition: 300ms;
 }
 .item-link.arrow-down:after {
+  margin-top: -0.25rem;
   -webkit-transform: rotate(135deg);
 }
 .item-link.arrow-up:after {
+  margin-top: -0.07rem;
   -webkit-transform: rotate(-45deg);
 }
 .item-link,
@@ -3065,7 +3067,7 @@ input:active {
   -webkit-animation-name: srhide;
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+  font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 400;
   font-size: 0.7rem;
   color: #3d4145;
@@ -3207,8 +3209,8 @@ big {
   margin-right: .5rem;
 }
 .prd-item .prd-img .img {
-  width: 100%;
-  height: 100%;
+  width: inherit;
+  height: inherit;
 }
 .prd-item .item-subtitle {
   font-size: 0.7rem;
