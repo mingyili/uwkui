@@ -6,13 +6,13 @@
     
     //秒倒计时
     $.fn.countDown = function(time, onChange, onEnd) {
-        if(!time) return;
-        return this.each(function() {
+        if (!time) return;
+        return this.each (function () {
             var _this = $(this), 
                 timer = _this.data('timer');
-            if(timer) clearInterval(timer), timer = '';
-            function countDown() {
-                if(time <= 0) {
+            if (timer) clearInterval(timer), timer = '';
+            function countDown () {
+                if (time <= 0) {
                     onEnd ? onEnd(_this) : _this.removeClass("disabled").html('获取验证码');
                     timer && clearInterval(timer);
                     _this.data('timer', '');

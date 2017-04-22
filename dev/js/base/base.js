@@ -860,9 +860,9 @@
     FastClick.prototype.onTouchEnd = function(event) {
         var forElement, trackingClickStart, targetTagName, scrollParent, touch, targetElement = this.targetElement;
 
-        
+
         if(targetElement == null || this.needsClick(targetElement)){
-           return false; 
+           return false;
         }
 
         if (!this.trackingClick) {
@@ -1176,7 +1176,7 @@
         return new FastClick(layer, options);
     };
 	//执行
-    FastClick.attach(document.body);  
+    FastClick.attach(document.body);
 }());;(function($) {
     'use strict';
 

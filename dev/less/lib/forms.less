@@ -13,7 +13,6 @@ input{
 .input,
 .select {
     width: 100%;
-    display: block;
     padding: 0;
     margin: 0;
     height: 1.5em;
@@ -46,7 +45,9 @@ input{
 .input-item {
     display: inline-block;
     min-width: 4em;
-    margin-right: .5rem;
+    & + .input-item {
+        margin-left: .5rem;
+    }
 }
 .radio {
     position: relative;
@@ -86,9 +87,10 @@ input{
     }
 }
 
+
 //列表内按钮
 .list-item {
-    .btn:not(.btn-fill) {
+    .btn {
         margin-top: -.4rem;
         margin-bottom: -.4rem;
     }
@@ -163,6 +165,47 @@ input{
     }
 }
 
+
+//头部内容全部填充 
+/* .list-fill-before {
+    padding: 0 @side-spacing-lr 0 0;
+    height: @list-height;
+    .select {
+        padding-left: @side-spacing-lr;
+        height: @list-height;
+        line-height: inherit;
+        width: auto;
+    }
+    .item-link {
+        padding-right: 0;
+        &:before {
+            .set-border-right(@color-split);
+        }
+    }
+} */
+
+//尾部内容全部填充 
+/* .list-fill-after {
+    padding: 0 0 0 @side-spacing-lr;
+    height: @list-height;
+    .item-after {
+        margin-left: .3rem;
+        .align-self(stretch);
+    }
+    .img {
+        height: @list-height;
+        display: block;
+    }
+    .btn {
+        height: @list-height;
+        padding: (@list-height - @font-size-small)/2 @side-spacing-lr;
+        margin: 0;
+        min-width: 3em;
+        border-radius: 0;
+        .border-remove(all);
+    }
+} */
+
 //错误提示
 .list-item .uicon-warn{
     display: none;
@@ -188,16 +231,17 @@ input{
     display: table;
     text-align: center;
     overflow: hidden;
-    .border(all, @number-border-color, .1rem);
-    color: @color-text;
-    width: 4.25rem;
+    .border(all, @number-border-color, .25rem);
+    color:@color-text;
+    width: 6.5rem;
     
     .uicon-add,
     .uicon-minus {
         display: table-cell;
         vertical-align: middle;
+        width: @number-height + .5rem;
+        height: @number-height;
         font-size: .65rem;
-        width: 2em;
         position: relative;
         &:active{
             background-color: @color-active-bg;

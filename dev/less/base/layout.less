@@ -90,6 +90,10 @@ body, html {
     background-color: @bar-footer-bg;
     bottom: 0;
     height: @bar-footer-height;
+    -webkit-backdrop-filter: blur(.25rem); //背景模糊
+    
+    .border(top, @border-default-color);
+
     & ~ .content {
         padding-bottom: @bar-footer-height;
         .copyright-cont,

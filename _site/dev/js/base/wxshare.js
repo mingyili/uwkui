@@ -11,24 +11,24 @@
 		//接口验证
 		wx.config($.wxConfig);
 		//接口验证失败
-		wx.error(function(res) { 
-			//alert('微信认证失败！'); 
+		wx.error(function(res) {
+			//alert('微信认证失败！');
 		});
 		//接口验证成功
-		wx.ready(function() { 
+		wx.ready(function() {
 			wx.checkJsApi({
 				jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'],
 				success: function (res) {
 					var msg = res.checkResult;
 					if(!msg.onMenuShareAppMessage || !msg.onMenuShareTimeline) {
-						//'不能配置分享信息';	
+						//'不能配置分享信息';
 					}
 					else $.setShare(shareData, hideMenu);
 				}
 			});
 		});
 	};
-	
+
 	/**
 	 * 设置分享数据 可用于再次更改分享数据
 	**/
@@ -38,14 +38,14 @@
 			hideMenu = shareData;
 			shareData = {};
 		}
-		
+
 		wx.showOptionMenu();
 		//隐藏右上角
 		if(hideMenu) {
 			// hideMenu是数组，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
 			if( hideMenu instanceof Array ) {
 				wx.hideMenuItems({
-					menuList: hideMenu 
+					menuList: hideMenu
 				});
 			}
 			else { //直接关闭菜单
@@ -53,7 +53,7 @@
 				return false;
 			}
 		}
-		
+
 		//分享重新赋值
 		shareData = $.extend({
             title : document.title, // 发送标题
@@ -62,7 +62,7 @@
 			imgUrl : '', // 发送图标
 			type : 'link',  // 发送类型,music、video或link，不填默认为link
 			dataUrl : '', // 如果type是music或video，则要提供数据链接，默认为空
-			trigger : function (res) { 
+			trigger : function (res) {
 				// 用户触发发送后执行的回调函数
 				return true;
 			},
@@ -79,7 +79,7 @@
 				return true;
 			}
         }, shareData);
-		
+
 		//分享链接末尾添加唯一字符串
 		if($.wxConfig.shareUniKey && shareData.link.indexOf('UniqueKey=') <= -1) {
 			var shareUniKey = $.wxConfig.shareUniKey;
@@ -87,7 +87,7 @@
 			else shareData.link += "?UniqueKey=";
 			shareData.link += $.wxConfig.shareUniKey;
 		}
-		
+
 		// 分享成功后执行
 		var diySuccess = shareData.success;
 		shareData.success = function(res) {
@@ -100,13 +100,13 @@
 			//调起http请求
 			var param = {},
 				rebuildParam = {}; //经过分析后重组的参数对象
-			
+
 			param.collectUrl = collectUrl; //后端接收地址
 			param.active = 2;
 			var c = new Collect() ;
 			rebuildParam = c.count(param) ;
 		};
-		
+
 		//设置分享数据
 		//发送给朋友
 		wx.onMenuShareAppMessage(shareData);
@@ -115,7 +115,7 @@
 		//分享到QQ
 		wx.onMenuShareQQ(shareData);
 		//分享到腾讯微博
-		wx.onMenuShareWeibo(shareData);	
+		wx.onMenuShareWeibo(shareData);
 	}
 
 })($, window);

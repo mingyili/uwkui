@@ -4,7 +4,7 @@
  * 键盘只生成一个，只是每次输入的input目标不同
  * 事件每次打开都会重新绑定
  */
- (function($) {
+;(function($) {
     'use strict';
 
     var $Keybod = {

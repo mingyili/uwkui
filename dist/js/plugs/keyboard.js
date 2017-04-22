@@ -4,7 +4,7 @@
  * 键盘只生成一个，只是每次输入的input目标不同
  * 事件每次打开都会重新绑定
  */
-;(function($) {
+ (function($) {
     'use strict';
 
     var $Keybod = {
@@ -63,7 +63,9 @@
                     e.stopPropagation(), obj.deletVal();
                 },
                 touchstart: function(e) {
-                    longtocuh = setTimeout(obj.deletVal.bind(obj, true), 500);
+                    longtocuh = setTimeout(function() {
+                        obj.deletVal(true);
+                    }, 500);
                 },
                 touchend: function() {
                     clearTimeout(longtocuh);

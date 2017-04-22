@@ -57,22 +57,13 @@
         font-size: @bar-footer-size;
         margin: .4em auto -.5em;
     }
-    &.btns-inline {
-        .btn:not(.btn-fill) {
-            margin: auto .5rem;
+    .btns-inline {
+        padding: .35rem;
+        .btn {
+            font-size: @font-size-default;
             & + .btn {
-                margin-left: 0;
+                margin-left: .35rem;
             }
         }
-    }
-    &.transparent {
-        box-shadow: none;
-        background-color: transparent;
-        &:before {
-            display: none;
-        }
-    }
-    .btn-fill {
-        line-height: 1.6;
     }
 }

@@ -16,10 +16,12 @@
     color: #fff;
     .border(all, rgba(0,0,0,.15), @btn-radius);
 
-    button& {
+    button&,
+    input& {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
         width: 100%;
-        &.btn-inline, 
-        &.btn-mini {
+        &.btn-inline, &.btn-mini {
             width: auto;
         }
     }
@@ -28,8 +30,7 @@
         margin-top: .75rem;
     }
 
-    &:active, 
-    &.active {
+    &:active, &.active {
         color: fadeout(#fff, 60%);
         background-color: @color-primary-active;
     }
@@ -38,22 +39,30 @@
 .btn-hold {
     opacity: .6;
     //pointer-events: none;
+    //color: fadeout(#fff, 40%);
+}
+    
+.btn-round {
+    border-radius: @btn-height * 2;
+    &:before{
+        border-radius: @btn-height * 3;
+    }
+}
+
+.btn-r-none {
+    border-radius: 0;
+    .border-remove(all);
 }
 
 .btn-inline,
 .btn-base,
 .btn-mini {
     display: inline-block;
-    border-radius: @btn-radius/2;
-    &:before{
-        border-radius: @btn-radius/2;
+    .border-radius(@btn-radius/2);
+    & + & {
+        margin-top: auto;
+        margin-left: .5em;
     }
-}
-.btn-inline + .btn-inline,
-.btn-base + .btn-base,
-.btn-mini + .btn-mini {
-    margin: auto;
-    margin-left: .5em;
 }
 
 .btn-mini {
@@ -73,9 +82,9 @@
     .btn {
         width: 100%;
         flex: 1;
-        margin: auto;
-        & + .btn:not(.btn-fill) {
-            margin-left: .5rem;
+        margin-top: auto;
+        & + .btn {
+            margin-left: .75rem;
         }
     }
 }
@@ -84,18 +93,27 @@
     min-width: 5rem;
     border-radius: 0;
     height: 100%;
+    line-height: 1.6;
     .border-remove(all);
     & + .btn-fill {
         margin: 0;
     }
 }
 
-.btn-round {
-    border-radius: @btn-height * 2;
-    &:before{
-        border-radius: @btn-height * 3;
+//两端对齐
+/* .btns-justify {
+    text-align: justify;
+    text-justify: distribute-all-lines;
+    font-size: 0;
+    &:after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+        height: 0;
+        font-size: 0;
+        overflow: hidden;
     }
-}
+} */
 
 //按钮主题
 .btn-variant(@color-bg, @color-active) {

@@ -1,4 +1,4 @@
-    // Variables
+// Variables
 @uwkuipath: '../less/';
 
 @import "@{uwkuipath}base/variables.less";
@@ -13,7 +13,7 @@
 @import "@{uwkuipath}base/layout.less";
 
 // lib
-@import "@{uwkuipath}lib/uicon.less"; 
+@import "@{uwkuipath}lib/uicon.less";
 @import "@{uwkuipath}lib/pages.less";
 @import "@{uwkuipath}lib/bars.less";
 @import "@{uwkuipath}lib/tags.less";
@@ -35,6 +35,7 @@
 @import "@{uwkuipath}lib/animate.less";
 
 @import "@{uwkuipath}base/base.less";
+
 //导航
 .bar-footer .tab-item {
     .tab-icon {
@@ -82,53 +83,18 @@
 }
 
 //商品列表样式
-@checkWidth: 2rem;
-.prd-list {
-    background-color: #fafafa;
-    &.hascheck {
-        .list-item {
-            padding-left: @checkWidth;
-            & + .list-item:before {
-                left: @checkWidth;
-            }
-        }
-    }
-    .item-check {
-        position: absolute;
-        width: @checkWidth; 
-        left: 0; top: 0; bottom: 0; z-index: 1;
-        .uicon-check {
-            position: absolute;
-            left: .5rem;
-            top: 50%;
-            margin-top: -.5em;
-        }
-    }
-}
 .prd-item {
-    line-height: 1.3;
     background-color: @color-bg-gray;
+    font-size: @font-size-small;
     .align-items(flex-start);
-    .prd-img {
-        width: 4.25rem;
-        height: 4.25rem;
-        margin-right: .5rem;
-        .img {
-            width: inherit;
-            height: inherit;
-        }
-    }
     .item-subtitle {
-        font-size: @font-size-default;
-        color: @color-text;
-        height: 2.6em;
+        font-size: @font-size-small;
     }
-    .item-sku {
-        height: 1.3em;
+    .item-desc {
+        font-size: @font-size-mini;
     }
-    .price {
-        font-size: @font-size-default + .05;
-        color: @color-primary;
+    &.bg-light {
+        background-color: @color-light;
     }
 }
 .list-title + .prd-item:before,

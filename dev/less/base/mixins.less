@@ -32,7 +32,6 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: @line;
-    word-break: break-all;
     //height: @line-height*@line;
 }
 
@@ -246,6 +245,11 @@
 .flexbox() {
     display: -webkit-flex;
     display: flex;
+}
+
+.flex-wrap(@fw) when (@fw =nowrap) {
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
 }
 
 .flex-wrap(@fw) {

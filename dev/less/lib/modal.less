@@ -10,14 +10,15 @@
     visibility: hidden;
     opacity: 0;
     transform: translate3d(0, 0, 0);
-    transition-duration: @duration;
     &.in {
         visibility: visible;
         opacity: 1;
+        transition-duration: @duration;
     }
     &.out {
         opacity: 0;
         transition-delay: 120ms;
+        transition-duration: @duration;
     }
 }
 .popup-mask {
@@ -41,7 +42,7 @@
     right: 0;
     top:0;
     bottom: 0;
-    margin: auto;
+    margin: 45% auto auto;
     display: table;
     &.in {
         animation-delay: 120ms;
@@ -195,7 +196,7 @@
         height: 100%;
         pointer-events: auto;
         .toast {
-            margin: 32vh auto auto;
+            margin: 45% auto auto;;
             background: rgba(40, 40, 40, 0.75);
         }
         .loader {

@@ -29,21 +29,21 @@
      * @type {{}}
      */
     searchBar.defaults = {
-        searchUrl : "#", //搜索跳转连接
-        matchUrl : "", //动态匹配ajaxurl
-        defvalue : "", //默认值
-        getTagsData : {
-            his : function (plug, callback) { 
+        searchUrl: "#", //搜索跳转连接
+        matchUrl: "", //动态匹配ajaxurl
+        defvalue: "", //默认值
+        getTagsData: {
+            'his': function(plug, callback) { 
                 //plug 是插件缓存 可调用 plug.setTags(type, arry);
                 //获取历史标签数据，异步操作成功后将获取的数据传入callback 执行
                 //callback(arry);
             },
-            hot : function (plug, callback) { 
+            'hot': function(plug, callback) { 
                 //获取热门标签数据，异步操作成功后将获取的数据传入callback 执行
                 //callback(arry);
             },
         },
-        onsearch : function (value) {
+        onsearch: function(value) {
             console.log('searching：' + value);
         }
     };
@@ -54,14 +54,14 @@
      */
     searchBar.prototype = {
 
-        init : function () {
+        init: function () {
             //console.log('init');
             this.setDom().bindEvent();
 
             return this;
         },
 
-        setDom : function () {
+        setDom: function () {
             var disabled = this.options.defvalue ? '' : 'disabled',
                 html = '<div class="search-block" >' +
                 '<div class="search-cont">' +
@@ -90,9 +90,9 @@
             this.$input = $searchCont.find('input');
             this.$search = $searchCont.find('.search-btn');
             this.$clear = $searchCont.find('.search-clear');
-            if (typeof (this.$tag) == 'undefined') this.$tag = {};
-            this.$tag.his = $searchCont.find('.search-his');
-            this.$tag.hot = $searchCont.find('.search-hot');
+            if(typeof (this.$tag) == 'undefined') this.$tag = {};
+            this.$tag['his'] = $searchCont.find('.search-his');
+            this.$tag['hot'] = $searchCont.find('.search-hot');
             this.$tagsCont = $searchCont.find('.search-tags');
             this.$matchCont = $searchCont.find('.search-match');
 
@@ -101,27 +101,26 @@
             return this;
         },
         
-        bindEvent : function () {
+        bindEvent: function () {
             var _this = this;
             //展示搜索模块
-            _this.$ele.on('click', function () {
+            _this.$ele.on('click', function(){
                 _this.$searchCont.show();
                 _this.$input.focus();
             });
             //关闭搜索模块
-            _this.$cancel.on('click', function () {
+            _this.$cancel.on('click', function(){
                 _this.$searchCont.hide();
             });
 
-            _this.$input.on('input', function () {
-                var value = $(this).val();
-                //自动匹配
-                if (_this.options.matchUrl) _this.match(value);
-                
-                if (value != "") _this.$search.removeClass('disabled');
-                else if (!_this.$search.hasClass('disabled')) 
-                    _this.$search.addClass('disabled');
-            });
+                _this.$input.on('input', function () {
+                    var value = $(this).val();
+                    //自动匹配
+                    if (_this.options.matchUrl) _this.match(value);
+                    
+                    if(value != "") _this.$search.removeClass('disabled');
+                    else if(!_this.$search.hasClass('disabled')) _this.$search.addClass('disabled');
+                });
 
             //清空
             _this.$clear.on('click', function () {
@@ -153,33 +152,34 @@
             return this;
         },
 
-        getTagsDom : function (arry) {
+        getTagsDom: function (arry) {
             var html = "", len = arry.length;
-            for (var i = 0; i<len; i++) {
+            for(var i = 0; i<len; i++) {
                 html += '<i class="tag-btn">'+ arry[i] + '</i>';
             }
 
             return html;
         },
 
-        setTags : function (type, arry) {
-            if (arry.length <= 0) {
+        setTags: function (type, arry) {
+            if(arry.length <= 0) {
                 this.$tag[type].hide();
                 return this;
             }
             var html = "";
             if (type === 'his') html = '<p class="search-title">历史搜索 <small class="clear-his">清空记录</small></p>';
-            else if (type === 'hot') html = '<p class="search-title">热门搜索</p>';
+            else if(type === 'hot') html = '<p class="search-title">热门搜索</p>';
             html += this.getTagsDom(arry);
             this.$tag[type].html(html).show();
+
             this.tags[type] = arry;
             return this;
         },
 
-        initTags : function (type) {
+        initTags: function (type) {
             var _this = this,
                 temp, arry = [];
-            if (typeof this.tags === 'undefined') this.tags = {};
+            if(typeof (this.tags) === 'undefined') this.tags = {};
 
             if (type === 'his') {
                 temp = window.localStorage.getItem('hisTags');
@@ -187,37 +187,38 @@
             }
 
             //自定义获取标签数据
-            this.options.getTagsData[type](_this, function (arry) {
+            this.options.getTagsData[type](_this, function(arry) {
                 _this.setTags(type, arry);
             });
 
             return this;
         },
 
-        addHisTagData : function (text) { //添加历史搜索数据
+        addHisTagData: function(text) { //添加历史搜索数据
             if (!text) return this;
-            if (this.tags.his && this.tags.his.indexOf(text) >= 0) return this;
-            this.tags.his.unshift(text);
-            window.localStorage.setItem('hisTags', this.tags.his.toString());
+
+            if (this.tags['his'] && this.tags['his'].indexOf(text) >= 0) return this;
+            this.tags['his'].unshift(text);
+            
+            window.localStorage.setItem('hisTags', this.tags['his'].toString());
 
             return this;
         },
         
-        clearHisTagData : function () { //清空历史搜索数据
-            this.$tag.his.html('').hide();
-            this.tags.his = [];
+        clearHisTagData: function() { //清空历史搜索数据
+            this.$tag['his'].html('').hide();
+            this.tags['his'] = [];
             window.localStorage.setItem('hisTags', '');
 
             return this;
         },
 
-        setMatchsDom : function (arry) { //设置匹配dom
+        setMatchsDom: function (arry) { //设置匹配dom
             if (!arry) return this;
-            var html = "", 
-                len = arry.length;
+            var html = "", len = arry.length;
             if (len <= 0) return this;
 
-            for (var i = 0; i<len; i++) {
+            for(var i = 0; i<len; i++) {
                 html += '<div class="match-item s-border-b">'+ arry[i] + '</div>';
             }
             this.$matchCont.html(html);
@@ -227,8 +228,8 @@
             return this;
         },
 
-        getMatch : function (text) { //设置匹配
-            if (!text) { //为空
+        getMatch: function (text) { //设置匹配
+            if(!text) { //为空
                 this.$tagsCont.show();
                 this.$matchCont.hide();
                 return this;
@@ -245,23 +246,25 @@
             });
         },
 
-        match : function (text) { //动态匹配
+        match: function (text) { //动态匹配
             var _this = this;
-            if (_this.timer) {
+            if(_this.timer) {
                 clearTimeout(_this.timer);
                 _this.timer = null;
             }
-            _this.timer = setTimeout(function () {
+            _this.timer = setTimeout(function(){
                 _this.getMatch(text);
                 _this.timer = null;
             }, 350); //确保输入停顿后350秒搜索
         },
 
-        search : function (text) {
-            if (!text) return;
+        search: function(text) {
+            if(!text) return;
             this.$input.val(text);
             //text = text.split(' ').join(',');
             this.addHisTagData(text);
+
+
             this.options.onsearch(text);
             //跳转搜索
             //window.location.href = this.searchUrl + text;
@@ -301,7 +304,7 @@
     };
 
     //zepto缓存数据
-    $.fn.searchBar.pluginData = { index: 0 };
+    $.fn.searchBar.pluginData = {index: 0};
 
     $.fn.searchBar.Constructor = searchBar;
 

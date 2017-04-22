@@ -63,7 +63,9 @@
                     e.stopPropagation(), obj.deletVal();
                 },
                 touchstart: function(e) {
-                    longtocuh = setTimeout(obj.deletVal.bind(obj, true), 500);
+                    longtocuh = setTimeout(function() {
+                        obj.deletVal(true);
+                    }, 500);
                 },
                 touchend: function() {
                     clearTimeout(longtocuh);

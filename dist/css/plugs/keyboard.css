@@ -2,18 +2,20 @@
  * uwkui
  * Author: lmy
  * Version: 1.0.0
- * Last Update: 2017-04-20 03:49:24
+ * Last Update: 2016-06-30 09:47:21
  */
 /**arrows*/
-input + .point {
+input[type="money"] + .point,
+input[type="quantity"] + .point {
   position: absolute;
   font-size: inherit;
-  top: 0.675rem;
-  bottom: 0.675rem;
+  top: 0.6rem;
+  bottom: 0.6rem;
   color: transparent;
   display: none;
 }
-input + .point:after {
+input[type="money"] + .point:after,
+input[type="quantity"] + .point:after {
   content: "";
   display: block;
   position: absolute;
@@ -24,7 +26,8 @@ input + .point:after {
   background-color: #446aef;
   border-radius: 2px;
 }
-input.focus + .point {
+input[type="money"].focus + .point,
+input[type="quantity"].focus + .point {
   display: block;
   -webkit-animation: focus-blink 1s infinite;
 }
@@ -61,7 +64,7 @@ input.focus + .point {
   right: 0;
   height: 1px;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #eaeaea;
   -webkit-transform-origin: 0 0;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {

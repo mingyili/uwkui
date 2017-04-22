@@ -373,7 +373,7 @@
         },
         refresh: function() {
             var rf = this.wrapper.offsetHeight; // Force reflow
-            // //jsfiddle.net/y8Y32/25/
+            // http://jsfiddle.net/y8Y32/25/
             // clientWidth = content + padding
             this.wrapperWidth = this.wrapper.clientWidth;
             this.wrapperHeight = this.wrapper.clientHeight;

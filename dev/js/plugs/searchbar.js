@@ -33,12 +33,12 @@
         matchUrl : "", //动态匹配ajaxurl
         defvalue : "", //默认值
         getTagsData : {
-            his : function (plug, callback) { 
+            his : function (plug, callback) {
                 //plug 是插件缓存 可调用 plug.setTags(type, arry);
                 //获取历史标签数据，异步操作成功后将获取的数据传入callback 执行
                 //callback(arry);
             },
-            hot : function (plug, callback) { 
+            hot : function (plug, callback) {
                 //获取热门标签数据，异步操作成功后将获取的数据传入callback 执行
                 //callback(arry);
             },
@@ -100,7 +100,7 @@
 
             return this;
         },
-        
+
         bindEvent : function () {
             var _this = this;
             //展示搜索模块
@@ -117,9 +117,9 @@
                 var value = $(this).val();
                 //自动匹配
                 if (_this.options.matchUrl) _this.match(value);
-                
+
                 if (value != "") _this.$search.removeClass('disabled');
-                else if (!_this.$search.hasClass('disabled')) 
+                else if (!_this.$search.hasClass('disabled'))
                     _this.$search.addClass('disabled');
             });
 
@@ -202,7 +202,7 @@
 
             return this;
         },
-        
+
         clearHisTagData : function () { //清空历史搜索数据
             this.$tag.his.html('').hide();
             this.tags.his = [];
@@ -213,7 +213,7 @@
 
         setMatchsDom : function (arry) { //设置匹配dom
             if (!arry) return this;
-            var html = "", 
+            var html = "",
                 len = arry.length;
             if (len <= 0) return this;
 
@@ -265,7 +265,7 @@
             this.options.onsearch(text);
             //跳转搜索
             //window.location.href = this.searchUrl + text;
-            window.location.reload();  
+            window.location.reload();
         },
     };
 

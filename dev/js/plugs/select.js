@@ -3,7 +3,7 @@
  */
 ;(function ($, w) {
     'use strict';
-    
+
     //默认
     var Select = function (ele, option) {
             this.opt = $.extend({}, Select.def, option);
@@ -28,7 +28,7 @@
         //是否有全选项
         defItem: '', //一个默认数据
         isChecked: '', //自定义是否选中
-        onSelect: function (data, ele) { 
+        onSelect: function (data, ele) {
             //选中事件 console.log(data, ele);
             //ele 点击触发元素，没有的时候是自动触发
         },
@@ -82,18 +82,18 @@
         },
         //获取单项dom
         getlistItem: function (e) {
-            var type = this.opt.type, 
+            var type = this.opt.type,
                 itemId = this.opt.itemId,
                 itemName = this.opt.itemName,
                 isChecked = this.isChecked(e);
-    
+
             if (isChecked) this.select(e);
             if (this.opt.renderItem) return this.opt.renderItem.call(this, e, isChecked, type);
             else {
                 //单选
-                if (type === 'radio') return ('<label class="list-item"><p class="item-inner">' + e[itemName] + '</p>' + 
+                if (type === 'radio') return ('<label class="list-item"><p class="item-inner">' + e[itemName] + '</p>' +
                 '<div class="item-after">' +
-                    '<input value="' + e[itemId] + '" ' + (isChecked ? 'checked' : '') + 
+                    '<input value="' + e[itemId] + '" ' + (isChecked ? 'checked' : '') +
                     ' type="radio" class="j_select input-radio" name="radio-select"><i class="uicon-check"></i>' +
                 '</div></label>');
                 //选择
@@ -106,11 +106,11 @@
         renderList: function (data) {
             if (!data) data = this.opt.selectData;
             else this.opt.selectData = data;
-            if (this.opt.defItem) 
+            if (this.opt.defItem)
                 !data && (data = []), data.unshift(this.opt.defItem);
             if (!data || data.length === 0) {
-                this.opt.domList.html('<li class="t-center pd-tb-big gray">暂无' + this.opt.keyWord + '数据</li>'); 
-                return this; 
+                this.opt.domList.html('<li class="t-center pd-tb-big gray">暂无' + this.opt.keyWord + '数据</li>');
+                return this;
             }
             var _obj = this;
             if (this.opt.renderList) this.opt.renderList.call(this, data, this);
@@ -124,9 +124,9 @@
         //获取列表数据
         getData: function (newData) {
             if (newData && typeof newData == 'object') {
-                if (typeof newData.length == 'undefined') $.extend(this.opt, newData); 
+                if (typeof newData.length == 'undefined') $.extend(this.opt, newData);
                 else this.opt.selectData = newData;
-            } 
+            }
             if (this.opt.selectData) return this.renderList();
             if (this.lock) return this;
             this.lock = true;
@@ -153,7 +153,7 @@
             return this;
         },
         open: function (render) {
-            if (!this.opt.selectData) this.delayOpen = true; 
+            if (!this.opt.selectData) this.delayOpen = true;
             else {
                 this.delayOpen = false;
                 //单选或者多选打开有时需要状态恢复
@@ -181,7 +181,7 @@
                 var _this = $(this),
                     $oldselect = _obj.opt.dom.find('.j_select.selected'),
                     id = _obj.opt.type === 'radio' ? _this.val() : _this.data(_obj.opt.itemId);
-                if (_obj.select(_obj.mapData[id], _this) !== false) 
+                if (_obj.select(_obj.mapData[id], _this) !== false)
                     $oldselect.removeClass('selected'), _this.addClass('selected'), _obj.close();
                 else if (_obj.opt.type === 'radio')
                     _this[0].checked = false, $oldselect[0] && ($oldselect[0].checked = true);
@@ -191,15 +191,15 @@
             return this;
         },
     };
-    
-    //数量实例化 $().select; 
+
+    //数量实例化 $().select;
     $.fn.select = function (option, arg) {
         return this.each(function () {
             var $this = $(this),
                 id = $this.data('select'),
                 data = $.fn.select.SelectData[id],
                 options = typeof option == 'object' ? option: {};
-            
+
             if (!data) {
                 id = $.fn.select.SelectData.index++;
                 data = $.fn.select.SelectData[id] = new Select(this, options);
