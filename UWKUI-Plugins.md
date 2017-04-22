@@ -29,7 +29,7 @@
         setVal: function(val) {}, //input 赋值操作
         deletVal: function(all) {}, //删除操作
     };
-    $.fn.keyboard(options);
+    $.fn.keyboard();
     // vpos支付已用到
 
 
@@ -49,14 +49,20 @@
      * @description ajax轮询
      * 支付成功后奖品轮询有用到
      * @param {json} options {} //传入变量
-         * @param {text} oopCheckUrl //请求链接 必填
+         * @param {text} loopCheckUrl //请求链接 必填
          * @param {json} inData //附带数据
          * @param {number} duration //循环频率 默认480
          * @param {number} maxLoopCount //最多可请求次数 默认10
          * @param {number} maxLoadingNum //当前时段最多可发起的请求数量 默认3
          * @param {function} success //请求成功后方法 必填 return false; 为结束
      */
-    $.loopLoad(options);
+    $.loopLoad({
+        loopCheckUrl: '',
+        inData: '',
+        success: function(data) {
+            console.log(data);
+        }
+    });
 
 #### menu.js 菜单，分类选择
 
@@ -73,7 +79,15 @@
          * @param {function} onSelect function (data) {}, //选中事件
          * @param {function} onAdd function (obj) {}, //点击添加事件
      */
-    $.fn.menu(options);
+    $.fn.menu({
+        dom: '',
+        menuUrl: '',
+        menuData: {},
+        checkedData: '';
+        onSelect: function(data) {
+            console.log(data);
+        }
+    });
 
 #### quantity.js 购买数量input插件
 
@@ -111,7 +125,17 @@
      */
 
     // 调用
-    $.fn.scrollLoad(options);
+    $.fn.scrollLoad({
+        dataUrl: '',
+        inData: {
+            page: 1,
+        },
+        renderData: function(data) {
+            $list.append('dom'); //在列表里添加处理好的的数据
+            if (page >= totalPage) this.loadEnd(); //调用加载结束（没有更多数据）
+            if (!totalPage) return false; //没有相关数据，
+        }
+    });
     // 重新加载 newOpt.inData 改变的时候（比如有tab切换的滚动加载，要改变类型）
     $.fn.scrollLoad("loadList", newOpt);
 
@@ -154,7 +178,14 @@
      */
 
     // 调用
-    $.fn.select(options);
+    $.fn.select({
+        keyWord: '优惠券',
+        dom: '',
+        selectData: '',
+        renderItem: function(data) {
+            return 'dom';
+        }
+    });
 
 #### time.js 倒计时处理
 
@@ -178,28 +209,6 @@
     window.serverTime //首先定义服务器时间
     $.fn.countDownDate(endTime, fmt, onEnd);
 
-#### selectSku.js sku选择
-
-    /**
-     * @description sku选择
-     * @param {number} time //要倒计时的时间 50s
-     * @param {function} onChange {} //变化时候触发
-     * @param {function} onEnd {} //倒计时结束时候触发
-     */
-    //读秒倒计时
-    $.fn.countDown(time, onChange, onEnd);
-
-#### order.js 下单处理
-
-    /**
-     * @description 下单处理
-     * @param {number} time //要倒计时的时间 50s
-     * @param {function} onChange {} //变化时候触发
-     * @param {function} onEnd {} //倒计时结束时候触发
-     */
-    //读秒倒计时
-    $.fn.countDown(time, onChange, onEnd);
-
 #### viewimg.js 微信图片预览
 
     /**
@@ -210,6 +219,54 @@
     //添加 view_img class 默认会实例化
     //添加 view_img class 的img 点击后会自动实例化预览
     <img src="path_180x180.jpg" alt="" class="view_img" data-original="原始图片路径" name="view">
+
+#### selectsku.js 选择sku
+
+    /**
+     * JS调用选择sku
+     * 商品购买，组团购等在使用
+     * @param {text} prdid //商品id
+     * @param {text} buyUrl //购买链接
+     * @param {text} distype //优惠类型
+     * @param {number} disnum //优惠价格
+     * @param {number} maxBuyNum //购买上限
+     * @param {text} btns : 'buy, cart' //可购买方式
+     //可购买方式通过数组定义 例如：
+     * @param {Array} btns: [{
+            type: 'zc', //自定义购买方式名称
+            style: 'btn-danger', //样式
+            text: '立即众筹', //文字
+            onClick: function(data) {
+                //data 购买数据
+                console.log(data);
+            }
+        }]
+     * @param {boolean} needOpen //单sku的是否需要打开
+     * @param {boolean} needFollow //是否需要关注
+     * @param {isFollow} needFollow //是否需已经关注
+     */
+    $(this).selectSku({
+        btns: {
+            type: 'buy',
+            onClick: function(data) {
+                //data 购买的商品数据
+            },
+        },
+        needOpen: true, //单sku的时候也要打开
+        needFollow: , //是否需要关注
+        isFollow: //是否已经关注
+    });
+
+
+    /**
+     * 通过dom 调用sku的方法
+     * needOpen 无条件打开sku
+     * needFollow 需要关注
+     * prdid 商品id
+     * prdlink 商品链接
+     * type 对应 btns : 'buy, cart', 要调起的购买方式
+     */
+    <a class="ywk-diybuy needFollow needOpen" prdid="" prdlink="" type="" ></a>
 
 #### wxshare.js 微信分享
 
@@ -228,6 +285,13 @@
      * shareData = []; 的时候是定义要隐藏的按钮组
      */
     //调用
+    shareData = {
+        title: '',
+        desc: '',
+        link: '',
+        imgUrl: '',
+        success: function() {}
+    };
     shareywk(shareData);
     $.setShare(shareData);
 
@@ -262,7 +326,12 @@
                 });
             }
      */
-    //调用
-    $.fn.pay();
+    //调用 //默认是微信支付
+    $.fn.pay({
+        tid: '',
+        payDataUrl: '', //获取要支付的订单数据
+        orderInfoUrl: '', //获取订单数据
+        successUrl: '', //支付成功后跳转
+    });
     //当支付信息变更的时候，重新调取支付
     $.fn.pay("pay", payType, tid);
